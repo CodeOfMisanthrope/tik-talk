@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-login-page',
@@ -10,6 +11,8 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/
   styleUrl: './login-page.component.scss',
 })
 export class LoginPageComponent {
+  authService = inject(AuthService);
+
   form = new FormGroup({
     username: new FormControl("", {
       validators: Validators.required,
@@ -22,6 +25,11 @@ export class LoginPageComponent {
   });
 
   onSubmit() {
-    console.log(this.form.value)
+    if (this.form.valid) {
+      const val = this.form.value;
+      this.authService.login(val).subscribe((res) => {
+        console.log(res)
+      })
+    }
   }
 }
