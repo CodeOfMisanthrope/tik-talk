@@ -18,10 +18,14 @@
     <div class="password-input">
       <input
         formControlName="password"
-        class="tt-input" type="text" placeholder="Введите пароль"
+        class="tt-input"
+        [type]="isPasswordVisible() ? 'text' : 'password'"
+        placeholder="Введите пароль"
       >
       <button
         class="password-eye-btn"
+        [class.active]="isPasswordVisible()"
+        (click)="isPasswordVisible.set(!isPasswordVisible())"
       >
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
