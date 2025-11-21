@@ -1,4 +1,5 @@
 import {Component, inject} from '@angular/core';
+import {Router} from '@angular/router';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import { AuthService } from '../../auth/auth.service';
 
@@ -12,6 +13,7 @@ import { AuthService } from '../../auth/auth.service';
 })
 export class LoginPageComponent {
   authService = inject(AuthService);
+  router = inject(Router);
 
   form = new FormGroup({
     username: new FormControl("", {
@@ -28,6 +30,7 @@ export class LoginPageComponent {
     if (this.form.valid) {
       const val = this.form.value;
       this.authService.login(val).subscribe((res) => {
+        this.router.navigate(["/"]);
         console.log(res)
       })
     }
