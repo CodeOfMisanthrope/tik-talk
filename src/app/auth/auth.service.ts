@@ -1,14 +1,16 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {TokenResponse} from './auth.interface';
-import {tap} from 'rxjs';
+import {Router} from '@angular/router';
+import {catchError, tap, throwError} from 'rxjs';
 import {CookieService} from 'ngx-cookie-service';
+import {TokenResponse} from './auth.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   http = inject(HttpClient);
+  router = inject(Router);
   cookieService = inject(CookieService);
   baseApiUrl = 'https://icherniakov.ru/yt-course/auth/';
 
@@ -27,9 +29,8 @@ export class AuthService {
     if (!payload.username || !payload.password) {
       throw new Error('Username and password are required');
     }
-    console.log(payload)
+
     const fd = new FormData();
-    console.log(fd);
     fd.append('username', payload.username);
     fd.append('password', payload.password);
 
@@ -47,5 +48,27 @@ export class AuthService {
 
     this.cookieService.set('token', this.token);
     this.cookieService.set('refreshToken', this.refreshToken);
+  }
+
+  refreshAuthToken() {
+    return this.http.post<TokenResponse>(
+      `${this.baseApiUrl}refresh`,
+      {
+        refresh_token: this.refreshToken,
+      }
+    ).pipe(
+      tap(res => this.saveTokens(res)),
+      catchError((err) => {
+        this.logout();
+        return throwError(err);
+      })
+    )
+  }
+
+  logout() {
+    this.cookieService.deleteAll();
+    this.token = null;
+    this.refreshToken = null;
+    this.router.navigate(['/login']);
   }
 }
