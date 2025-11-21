@@ -4,7 +4,10 @@ import {ExperimentalComponent} from './components/experimental/experimental.comp
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ExperimentalComponent],
+  imports: [
+    RouterOutlet,
+    // ExperimentalComponent
+  ],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
