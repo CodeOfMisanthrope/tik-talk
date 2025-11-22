@@ -16,7 +16,7 @@
     <div>
       <h3 class="h6 mb16">Подписчики</h3>
 
-      <div class="subscribers-wrapper">
+      <div class="subscribers-wrapper mb32">
         @for (subscriber of subscribers$ | async; track subscriber.id) {
           <a class="subscriber-avatar-btn" [routerLink]="['/profile', subscriber.id]">
             <img [src]="subscriber.avatarUrl | imgUrl" alt="">
@@ -24,6 +24,16 @@
         }
         <a class="subscriber-avatar-search">
         </a>
+      </div>
+
+      <h3 class="h6 mb16">Навыки</h3>
+
+      <!--      Скиллов нет -->
+      <!--      @for (skill of profile.stack; track skill) {-->
+      <div class="stack-wrapper mb32">
+        @for (skill of ['123', '12313']; track skill) {
+          <div class="skill-tag">{{ skill }}</div>
+        }
       </div>
     </div>
   </main>
