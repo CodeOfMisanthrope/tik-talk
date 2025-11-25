@@ -16,12 +16,8 @@ import {ProfileFiltersComponent} from './profile-filters/profile-filters.compone
 export class SearchPageComponent {
   profileService = inject(ProfileService);
 
-  profiles: Profile[] = [];
+  profiles = this.profileService.filteredProfiles
 
   constructor() {
-    this.profileService.getTestAccounts()
-      .subscribe(val => {
-        this.profiles = val;
-      });
   }
 }
