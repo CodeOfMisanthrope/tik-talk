@@ -2,12 +2,14 @@ import {Component, inject, Renderer2} from '@angular/core';
 import {AvatarCircleComponent} from '../../../common-ui/avatar-circle/avatar-circle.component';
 import {ProfileService} from '../../../data/services/profile.service';
 import {NgIf} from '@angular/common';
+import {SvgIconComponent} from '../../../common-ui/svg-icon/svg-icon.component';
 
 @Component({
   selector: 'app-post-input',
   imports: [
     AvatarCircleComponent,
-    NgIf
+    NgIf,
+    SvgIconComponent
   ],
   templateUrl: './post-input.component.html',
   styleUrl: './post-input.component.scss',
