@@ -52,4 +52,13 @@ export class ProfileService {
       fd
     );
   }
+
+  filterProfiles(params: Record<string, any>) {
+    return this.http.get<Pageable<Profile[]>>(
+      `${this.baseApiUrl}account/accounts`,
+      {
+        params
+      }
+    );
+  }
 }
