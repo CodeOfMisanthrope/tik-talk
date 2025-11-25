@@ -9,9 +9,10 @@ import {canActivateAuth} from './auth/access.guard';
 export const routes: Routes = [
   {
     path: '', component: LayoutComponent, children: [
-      {path: 'search', component: SearchPageComponent},
+      {path: '', redirectTo: 'profile/me', pathMatch: 'full'},
       {path: 'profile/:id', component: ProfilePageComponent},
       {path: 'settings', component: SettingsPageComponent},
+      {path: 'search', component: SearchPageComponent},
     ],
     canActivate: [canActivateAuth]
   },
