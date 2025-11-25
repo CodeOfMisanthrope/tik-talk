@@ -7,3 +7,15 @@
   grid-gap: 12px;
   align-items: center;
 }
+
+.hidden-textarea {
+  resize: none;
+  background-color: var(--dark-color);
+  border: none;
+  color: var(--light-color);
+
+  &:hover,
+  &:focus-visible {
+    outline: 1px solid var(--primary-color);
+  }
+}

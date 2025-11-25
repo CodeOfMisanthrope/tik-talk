@@ -3,3 +3,8 @@
   class="size32"
   [avatarUrl]="profile.avatarUrl"
 ></app-avatar-circle>
+
+<textarea
+  class="hidden-textarea"
+  (input)="onTextareaInput($event)"
+></textarea>
