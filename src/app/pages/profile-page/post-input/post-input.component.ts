@@ -1,4 +1,4 @@
-import {Component, HostBinding, inject, input, Renderer2} from '@angular/core';
+import {Component, EventEmitter, HostBinding, inject, input, Output, Renderer2} from '@angular/core';
 import {NgIf} from '@angular/common';
 import {AvatarCircleComponent} from '../../../common-ui/avatar-circle/avatar-circle.component';
 import {SvgIconComponent} from '../../../common-ui/svg-icon/svg-icon.component';
@@ -26,6 +26,8 @@ export class PostInputComponent {
   postId = input<number>(0);
   profile = inject(ProfileService).me;
 
+  @Output() created = new EventEmitter();
+
   @HostBinding('class.comment')
   get isComment() {
     return this.isCommentInput();
@@ -49,6 +51,7 @@ export class PostInputComponent {
         postId: this.postId(),
       })).then(() => {
         this.postText = "";
+        this.created.emit();
       });
       return;
     }
