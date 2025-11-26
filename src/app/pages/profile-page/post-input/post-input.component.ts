@@ -1,4 +1,4 @@
-import {Component, inject, Renderer2} from '@angular/core';
+import {Component, inject, input, Renderer2} from '@angular/core';
 import {NgIf} from '@angular/common';
 import {AvatarCircleComponent} from '../../../common-ui/avatar-circle/avatar-circle.component';
 import {SvgIconComponent} from '../../../common-ui/svg-icon/svg-icon.component';
@@ -21,6 +21,9 @@ import {firstValueFrom} from 'rxjs';
 export class PostInputComponent {
   r2 = inject(Renderer2);
   postService = inject(PostService);
+
+  isCommentInput = input(false);
+  postId = input<number>(0);
   profile = inject(ProfileService).me;
 
   postText = "";
@@ -34,8 +37,19 @@ export class PostInputComponent {
   onCreatePost() {
     if (!this.postText) return;
 
+    if (this.isCommentInput()) {
+      firstValueFrom(this.postService.createComment({
+        text: "Новый пост",
+        authorId: this.profile()!.id,
+        postId: this.postId(),
+      })).then(() => {
+        this.postText = "";
+      });
+      return;
+    }
+
     firstValueFrom(this.postService.createPost({
-      title: "",
+      title: "Новый пост",
       content: this.postText,
       authorId: this.profile()!.id,
       communityId: 0,
