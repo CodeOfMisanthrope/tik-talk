@@ -24,7 +24,13 @@ export interface Post {
 export interface Comment {
   id: number;
   text: string;
-  author: Profile;
+  author: {
+    id: number;
+    username: string,
+    // avatarUrl: string | null,
+    avatarUrl: string,
+    subscribersAmount: number,
+  };
   postId: number;
   commentId: number;
   createdAt: string;
@@ -35,5 +41,5 @@ export interface CommentCreateDto {
   text: string;
   authorId: number;
   postId: number;
-  commentId: number;
+  // commentId: number;
 }
