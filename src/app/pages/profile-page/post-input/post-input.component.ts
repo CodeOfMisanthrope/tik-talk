@@ -44,7 +44,7 @@ export class PostInputComponent {
 
     if (this.isCommentInput()) {
       firstValueFrom(this.postService.createComment({
-        text: "Новый пост",
+        text: this.postText,
         authorId: this.profile()!.id,
         postId: this.postId(),
       })).then(() => {
