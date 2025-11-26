@@ -4,6 +4,7 @@ import {AvatarCircleComponent} from '../../../common-ui/avatar-circle/avatar-cir
 import {DatePipe} from '@angular/common';
 import {SvgIconComponent} from '../../../common-ui/svg-icon/svg-icon.component';
 import {PostInputComponent} from '../post-input/post-input.component';
+import {CommentComponent} from './comment/comment.component';
 
 @Component({
   selector: 'app-post',
@@ -12,6 +13,7 @@ import {PostInputComponent} from '../post-input/post-input.component';
     AvatarCircleComponent,
     SvgIconComponent,
     PostInputComponent,
+    CommentComponent,
   ],
   templateUrl: './post.component.html',
   styleUrl: './post.component.scss',
