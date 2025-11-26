@@ -20,5 +20,10 @@
         <span class="comments-length">{{post.comments.length}}</span>
       </span>
     </div>
+
+    <app-post-input
+      [postId]="post.id"
+      [isCommentInput]="true"
+    ></app-post-input>
   </main>
 }
