@@ -3,6 +3,7 @@ import {PostInputComponent} from '../post-input/post-input.component';
 import {PostComponent} from '../post/post.component';
 import {PostService} from '../../../data/services/post.service';
 import {firstValueFrom} from 'rxjs';
+import {Throttle} from '../../../core/decorators/throttle';
 
 @Component({
   selector: 'app-post-feed',
@@ -20,8 +21,10 @@ export class PostFeedComponent {
 
   feed = inject(PostService).posts;
 
+  @Throttle(500)
   @HostListener('window:resize')
   onWindowResize() {
+    console.log("called window:resize", Date.now());
     this.resizeFeed();
   }
 
