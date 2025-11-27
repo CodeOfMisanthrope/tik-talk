@@ -5,8 +5,10 @@ export function throttle<T extends Function>(func: T, wait: number) {
   return function <This>(this: This, ...args: unknown[]) {
     if (!timeout) {
       func.call(this, ...args);
+
     } else {
       lastArgs = [...args];
+      return;
     }
 
     timeout = setTimeout(() => {
