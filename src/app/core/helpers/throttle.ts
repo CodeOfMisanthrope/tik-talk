@@ -1,26 +1,27 @@
 export function throttle<T extends Function>(func: T, wait: number) {
-  let timeout: ReturnType<typeof setTimeout> | null = null;
+  let isThrottled = false;
   let lastArgs: unknown[] | null = null;
 
-  return function <This>(this: This, ...args: unknown[]) {
-    if (!timeout) {
-      func.call(this, ...args);
-
-    } else {
+  function wrapper<This>(this: This, ...args: unknown[]) {
+    if (isThrottled) {
       lastArgs = [...args];
       return;
     }
 
-    timeout = setTimeout(() => {
+    func.call(this, ...args);
+
+    isThrottled = true;
+
+    const timeout:ReturnType<typeof setTimeout> = setTimeout(() => {
+      isThrottled = false;
       if (lastArgs) {
-        func.call(this, ...lastArgs);
+        wrapper.call(this, ...lastArgs);
         lastArgs = null;
       }
 
-      if (timeout) {
-        clearTimeout(timeout);
-        timeout = null;
-      }
+      clearTimeout(timeout);
     }, wait);
-  };
+  }
+
+  return wrapper;
 }
