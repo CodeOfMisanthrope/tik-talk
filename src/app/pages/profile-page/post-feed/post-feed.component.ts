@@ -21,10 +21,10 @@ export class PostFeedComponent {
 
   feed = inject(PostService).posts;
 
-  @Throttle(500)
+  @Throttle(300)
   @HostListener('window:resize')
   onWindowResize() {
-    console.log("called window:resize", Date.now());
+    // console.log("called window:resize", Date.now());
     this.resizeFeed();
   }
 
