@@ -26,7 +26,7 @@ export class PostInputComponent {
   postId = input<number>(0);
   profile = inject(ProfileService).me;
 
-  @Output() created = new EventEmitter();
+  @Output() created = new EventEmitter<{postText: string}>();
 
   @HostBinding('class.comment')
   get isComment() {
@@ -64,5 +64,11 @@ export class PostInputComponent {
     })).then(() => {
       this.postText = "";
     });
+  }
+
+  onClick(event: Event) {
+    // console.log("event", event);
+    this.created.emit({postText: this.postText});
+    this.postText = "";
   }
 }
