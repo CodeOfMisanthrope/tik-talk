@@ -66,8 +66,7 @@ export class PostInputComponent {
     });
   }
 
-  onClick(event: Event) {
-    // console.log("event", event);
+  onClick() {
     this.created.emit({postText: this.postText});
     this.postText = "";
   }
