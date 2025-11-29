@@ -6,6 +6,7 @@ import {ProfileService} from '../../../data/services/profile.service';
 import {PostService} from '../../../data/services/post.service';
 import {FormsModule} from '@angular/forms';
 import {firstValueFrom} from 'rxjs';
+import {Deprecated} from '../../../core/decorators/deprecated';
 
 @Component({
   selector: 'app-post-input',
@@ -41,6 +42,7 @@ export class PostInputComponent {
     this.r2.setStyle(textarea, 'height', textarea.scrollHeight + 'px');
   }
 
+  @Deprecated()
   onCreatePost() {
     if (!this.postText) return;
 
