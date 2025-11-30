@@ -8,7 +8,8 @@
     <div class="post-header">
       <strong class="post__author">
         {{ post.author.firstName }} {{ post.author.lastName }}
-        <span class="post-created-at">{{ post.createdAt | date: 'hh:mm dd.mm.yyyy' }}</span>
+<!--        <span class="post-created-at">{{ post.createdAt | date: 'hh:mm dd.mm.yyyy' }}</span>-->
+        <span class="post-created-at">{{ post.createdAt | timeAgo }}</span>
       </strong>
     </div>
 
@@ -30,7 +31,7 @@
     </div>
 
     <app-post-input
-      (created)="onCreated()"
+      (created)="onCreated($event)"
       [postId]="post.id"
       [isCommentInput]="true"
     ></app-post-input>
