@@ -23,14 +23,23 @@ import {TimeAgoPipe} from '../../../helpers/pipes/time-ago.pipe';
 export class PostComponent implements OnInit {
   post = input<Post>();
 
-  comments = signal<PostComment[]>([])
+  comments = signal<PostComment[]>([]);
 
   postService = inject(PostService);
 
-  async onCreated() {
-    const comments = await firstValueFrom(this.postService.getCommentsByPostId(this.post()!.id));
+  async onCreated(event: {postText: string}) {
+    await this.createPost(event.postText);
 
+    const comments = await firstValueFrom(this.postService.getCommentsByPostId(this.post()!.id));
     this.comments.set(comments);
+  }
+
+  createPost(content: string) {
+    return firstValueFrom(this.postService.createComment({
+      text: content,
+      authorId: this.post()!.author!.id,
+      postId: this.post()!.id,
+    }));
   }
 
   async ngOnInit() {
