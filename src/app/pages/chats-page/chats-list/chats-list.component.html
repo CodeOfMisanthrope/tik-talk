@@ -1,7 +1,12 @@
 <div class="chats-filters-input__wrapper">
   <label class="tt-form-label">
-    <span class="tt-form-label-text">Имя</span>
-    <input type="text" class="tt-form-input">
+    <span class="tt-form-label-text"></span>
+    <input
+      placeholder="Искать..."
+      type="text"
+      class="tt-form-input"
+      [formControl]="filterChatsControl"
+    >
   </label>
 </div>
 
@@ -9,5 +14,7 @@
   <button
     chats
     [chat]="chat"
+    [routerLink]="[chat.id]"
+    routerLinkActive="active"
   ></button>
 }
