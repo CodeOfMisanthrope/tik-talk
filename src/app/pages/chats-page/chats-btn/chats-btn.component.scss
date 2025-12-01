@@ -11,7 +11,8 @@
 }
 
 :host:hover,
-:host:focus-visible {
+:host:focus-visible,
+:host.active {
   background-color: var(--dark-active-color);
 }
 
