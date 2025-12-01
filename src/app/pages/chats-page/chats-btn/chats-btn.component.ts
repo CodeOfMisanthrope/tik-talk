@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, input} from '@angular/core';
 import {AvatarCircleComponent} from '../../../common-ui/avatar-circle/avatar-circle.component';
+import {LastMessageRes} from '../../../data/interfaces/chats.interface';
 
 @Component({
   selector: 'button[chats]',
@@ -10,5 +11,5 @@ import {AvatarCircleComponent} from '../../../common-ui/avatar-circle/avatar-cir
   styleUrl: './chats-btn.component.scss',
 })
 export class ChatsBtnComponent {
-
+  chat = input<LastMessageRes>();
 }
