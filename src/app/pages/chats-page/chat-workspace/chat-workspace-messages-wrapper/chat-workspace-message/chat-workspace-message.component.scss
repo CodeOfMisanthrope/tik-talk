@@ -1,0 +1,12 @@
+:host {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  grid-gap: 12px;
+}
+
+.message-text {
+  padding: 8px 16px;
+  background-color: var(--message-color);
+  font-weight: 500;
+  color: var(--light-color);
+}
