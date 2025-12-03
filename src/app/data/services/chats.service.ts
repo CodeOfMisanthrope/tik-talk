@@ -33,7 +33,8 @@ export class ChatsService {
             messages: chat.messages.map(message => {
               return {
                 ...message,
-                user: chat.userFirst.id === message.userFromId ? chat.userFirst : chat.userSecond
+                user: chat.userFirst.id === message.userFromId ? chat.userFirst : chat.userSecond.avatarUrl,
+                isMine: message.userFromId === this.me()!.id,
               };
             })
           };
