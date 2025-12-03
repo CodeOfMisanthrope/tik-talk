@@ -35,8 +35,8 @@ export class ChatsService {
       )
   }
 
-  sendMessage(chatId: number, message: string) {
-    return this.http.post<Message>(`${this.messageUrl}${chatId}`, {}, {
+  sendMessage<Message>(chatId: number, message: string) {
+    return this.http.post<Message>(`${this.messageUrl}send/${chatId}`, {}, {
       params: {
         message
       }
