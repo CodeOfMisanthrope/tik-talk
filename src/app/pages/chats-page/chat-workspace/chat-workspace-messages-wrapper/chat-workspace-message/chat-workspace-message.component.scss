@@ -4,6 +4,15 @@
   grid-gap: 12px;
 }
 
+:host.is-mine {
+  grid-template-columns: min-content 32px;
+  justify-self: end;
+
+  .message-container {
+    order: -1;
+  }
+}
+
 .message-text {
   padding: 8px 16px;
   background-color: var(--message-color);
