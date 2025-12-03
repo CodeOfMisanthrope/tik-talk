@@ -10,6 +10,7 @@
   font-weight: 500;
   color: var(--light-color);
   width: min-content;
+  // todo поменять угол
   mask: linear-gradient(#000 0 0), linear-gradient(-135deg, #000 50%, #0000 0) border-box 100% 100% / 200% 200% no-repeat;
   mask-composite: exclude;
   mask-position: 10% 94%;
