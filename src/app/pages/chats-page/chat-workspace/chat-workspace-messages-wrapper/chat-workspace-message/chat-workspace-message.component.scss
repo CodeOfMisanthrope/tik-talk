@@ -11,6 +11,10 @@
   .message-container {
     order: -1;
   }
+
+  .message-text {
+    background-color: var(--primary-color);
+  }
 }
 
 .message-text {
