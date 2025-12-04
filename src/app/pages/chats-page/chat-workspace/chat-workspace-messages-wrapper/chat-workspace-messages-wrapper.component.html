@@ -7,7 +7,7 @@
 <!--</div>-->
 
 <div class="messages-wrapper">
-  @for (group of groupsMessages(); track group) {
+  @for (group of groupsMessages(); track group[0]) {
     <div class="message-date-zone">
       <span class="message-date-zone__value">{{group[0]}}</span>
     </div>
