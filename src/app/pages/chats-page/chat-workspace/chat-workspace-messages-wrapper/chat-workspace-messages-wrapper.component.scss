@@ -1,0 +1,32 @@
+:host {
+  display: grid;
+  padding: 16px 20px;
+  //grid-template-rows: 1fr min-content;
+  grid-template-rows: minmax(0, 1fr) auto;
+  //min-height: 80dvh;
+  height: 90vh;
+  max-height: 100vh;
+}
+
+.messages-wrapper {
+  display: grid;
+  grid-gap: 12px;
+  //height: 900px;
+  //min-height: 0; /* важно для корректной работы в grid */
+  align-content: start; /* сообщения начинаются сверху */
+  overflow-y: auto;
+  grid-auto-rows: min-content;
+}
+
+.message-date-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.message-date-zone__value {
+  background-color: var(--dark-hover-color);
+  color: var(--message-timezone-color-value);
+  padding: 6px 30px;
+  display: block;
+}

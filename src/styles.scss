@@ -4,11 +4,15 @@
 
 :root {
   --dark-color: #000000;
+  --dark-active-color: rgba(22, 22, 22, 1);
   --light-color: #FFFFFF;
   --primary-color: #AE7AFF;
   --gray-color: #5F646D;
   --dark-hover-color: #161616;
   --light-transparent-color: rgba(255, 255, 255, 0.75);
+  --message-timezone-color-value: rgba(235, 240, 240, 1);
+  --message-color: #404040;
+  --light-border: 1px solid var(--light-color);
 }
 
 *,
