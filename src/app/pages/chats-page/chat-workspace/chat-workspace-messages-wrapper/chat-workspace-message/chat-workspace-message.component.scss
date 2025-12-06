@@ -11,6 +11,18 @@
   .message-container {
     order: -1;
   }
+
+  .message-text {
+    background-color: var(--primary-color);
+  }
+
+  .message-text {
+    mask:
+      linear-gradient(#000 0 0),
+      linear-gradient(-595deg, #000 50%, #0000 0) border-box 100% 100% / 200% 200% no-repeat;
+    mask-composite: exclude;
+    mask-position: 122% 6%;
+  }
 }
 
 .message-text {
