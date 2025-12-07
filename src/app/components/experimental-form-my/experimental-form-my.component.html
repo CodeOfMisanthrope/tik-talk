@@ -1,4 +1,4 @@
-<form class="form__container">
+<form class="form__container" [formGroup]="form">
   <h4 class="h4 mb32">Отзыв о Аниме</h4>
 
     <label class="tt-control-label mb16">
@@ -21,13 +21,15 @@
     >
   </label>
 
-  <label class="tt-control-label mb16">
-    <span class="tt-form-label-text">Почта</span>
-    <input
-      type="email"
-      formControlName="email"
-      class="tt-input"
-    >
-  </label>
+  <div formGroupName="Contacs">
+    <label class="tt-control-label mb16">
+      <span class="tt-form-label-text">Почта</span>
+      <input
+        type="email"
+        formControlName="email"
+        class="tt-input"
+      >
+    </label>
+  </div>
 
 </form>
