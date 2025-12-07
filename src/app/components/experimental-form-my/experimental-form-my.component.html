@@ -1,4 +1,4 @@
-<form class="form__container" [formGroup]="form">
+<form class="form__container" [formGroup]="form" (ngSubmit)="onSubmit($event)">
   <h4 class="h4 mb32">Отзыв о Аниме</h4>
 
     <label class="tt-control-label mb16">
@@ -35,7 +35,6 @@
   <button
     class="btn"
     type="submit"
-    (submit)="onSubmit()"
   >Отправить</button>
 
 </form>

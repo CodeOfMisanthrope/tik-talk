@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
+import {Component} from '@angular/core';
+import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 
 enum AnimeName {
   JoJo,
@@ -25,12 +25,14 @@ export class ExperimentalFormMyComponent {
   protected readonly AnimeName = AnimeName;
 
   form = new FormGroup({
-    name: new FormControl<AnimeName>(AnimeName.JoJo),
-    review: new FormControl<string>(''),
+    name: new FormControl<AnimeName>(AnimeName.JoJo, [Validators.required]),
+    review: new FormControl<string>('', [
+      Validators.required, Validators.minLength(3)
+    ]),
     contacts: getContactsForm()
   });
 
-  onSubmit() {
-    console.log(this.form.value);;
+  onSubmit(event: Event) {
+    console.log(this.form.value);
   }
 }
