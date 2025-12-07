@@ -2,21 +2,21 @@
 
   <h4 class="h4 mb16">Заявка на ремонт телевизора</h4>
 
-  <label class="tt-control-label mb16">
-    <select class="tt-input tv" id="tvType" [formControlName]="type">
-      <option value="" disabled selected class="placeholder" [value]="ReceiverType.ALL">
-        Тип телевизора
-      </option>
-      <option [value]="ReceiverType.ALL">LED-телевизор</option>
-      <option [value]="ReceiverType.ALL">QLED-телевизор</option>
-      <option [value]="ReceiverType.ALL">LCD-телевизор</option>
-      <option [value]="ReceiverType.ALL">OLED-телевизор</option>
-      <option [value]="ReceiverType.ELT">PDP-панель(плазма)</option>
-      <option [value]="ReceiverType.ELT">ЭЛТ-телевизор(кинескоп)</option>
-    </select>
-  </label>
+<!--  <label class="tt-control-label mb16">-->
+<!--    <select class="tt-input tv" id="tvType" [formControlName]="type">-->
+<!--      <option value="" disabled selected class="placeholder" [value]="ReceiverType.ALL">-->
+<!--        Тип телевизора-->
+<!--      </option>-->
+<!--      <option [value]="ReceiverType.ALL">LED-телевизор</option>-->
+<!--      <option [value]="ReceiverType.ALL">QLED-телевизор</option>-->
+<!--      <option [value]="ReceiverType.ALL">LCD-телевизор</option>-->
+<!--      <option [value]="ReceiverType.ALL">OLED-телевизор</option>-->
+<!--      <option [value]="ReceiverType.ELT">PDP-панель(плазма)</option>-->
+<!--      <option [value]="ReceiverType.ELT">ЭЛТ-телевизор(кинескоп)</option>-->
+<!--    </select>-->
+<!--  </label>-->
 
-  @if (form.controls.type.touched && form.controls.type.hasError('required')) {
-    <small class="text-error">Это поле обязательно</small>
-  }
+<!--  @if (form.controls.type.touched && form.controls.type.hasError('required')) {-->
+<!--    <small class="text-error">Это поле обязательно</small>-->
+<!--  }-->
 </form>
