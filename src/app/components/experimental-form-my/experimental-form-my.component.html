@@ -21,7 +21,7 @@
     >
   </label>
 
-  <div formGroupName="contacs">
+  <div formGroupName="contacts">
     <label class="tt-control-label mb16">
       <span class="tt-form-label-text">Почта</span>
       <input
@@ -31,5 +31,11 @@
       >
     </label>
   </div>
+
+  <button
+    class="btn"
+    type="submit"
+    (submit)="onSubmit()"
+  >Отправить</button>
 
 </form>

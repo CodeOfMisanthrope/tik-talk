@@ -29,4 +29,8 @@ export class ExperimentalFormMyComponent {
     review: new FormControl<string>(''),
     contacts: getContactsForm()
   });
+
+  onSubmit() {
+    console.log(this.form.value);;
+  }
 }
