@@ -35,8 +35,8 @@
       >+</button>
     </div>
 
-    @for (char of form.controls.characters.controls; track char) {
-      <div class="character" [formGroup]="char">
+    @for (char of form.controls.characters.controls; track char; let i = $index) {
+      <div class="character mb32" [formGroup]="char">
         <label class="tt-control-label mb16">
           <span class="tt-form-label-text">Имя персонажа</span>
           <input
@@ -46,8 +46,8 @@
           >
         </label>
 
-        <div class="form-grid">
-          <label class="tt-control-label mb16">
+        <div class="form-grid mb16">
+          <label class="tt-control-label">
             <span class="tt-form-label-text">Глубина</span>
             <input
               type="number"
@@ -56,7 +56,7 @@
             >
           </label>
 
-          <label class="tt-control-label mb16">
+          <label class="tt-control-label">
             <span class="tt-form-label-text">История</span>
             <input
               type="number"
@@ -65,6 +65,8 @@
             >
           </label>
         </div>
+
+        <button class="btn" type="button" (click)="deleteCharacter(i)">Удалить</button>
       </div>
     }
   </div>
