@@ -55,7 +55,10 @@
   </div>
 
   <div class="mb20">
-    <h5 class="mb16">Оценка отдельных персонажей</h5>
+    <div class="characters__header">
+      <h5 class="mb16">Оценка отдельных персонажей</h5>
+      <button class="btn characters__header-btn" (click)="addCharacter()">+</button>
+    </div>
 
     @for (char of form.controls.characters.controls; track char) {
       <div class="character" [formGroup]="char">

@@ -3,3 +3,12 @@
   padding: 40px 20px;
   max-width: 500px;
 }
+
+.characters__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.characters__header-btn {
+  width: 50px;
+}

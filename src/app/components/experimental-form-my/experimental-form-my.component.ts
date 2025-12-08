@@ -15,7 +15,7 @@ function getContactsForm() {
   });
 }
 
-function getCharacters() {
+function getCharacter() {
   return new FormGroup({
     name: new FormControl('', Validators.required),
     depth: new FormControl(0, [Validators.required, Validators.min(0), Validators.max(10)]),
@@ -41,7 +41,7 @@ export class ExperimentalFormMyComponent {
       Validators.minLength(3)
     ]),
     contacts: getContactsForm(),
-    characters: new FormArray([getCharacters()]),
+    characters: new FormArray([getCharacter()]),
   });
 
   constructor() {
@@ -58,5 +58,9 @@ export class ExperimentalFormMyComponent {
     this.form.markAllAsTouched();
     this.form.updateValueAndValidity();
     console.log(this.form.value);
+  }
+
+  addCharacter() {
+    this.form.controls.characters.push(getCharacter());
   }
 }
