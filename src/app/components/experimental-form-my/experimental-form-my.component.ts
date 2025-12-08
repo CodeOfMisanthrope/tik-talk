@@ -1,6 +1,8 @@
-import {Component} from '@angular/core';
-import {FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {Component, inject} from '@angular/core';
+import {FormArray, FormControl, FormGroup, FormRecord, ReactiveFormsModule, Validators} from '@angular/forms';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {Features, MockService} from './mock.service';
+import {KeyValuePipe} from '@angular/common';
 
 enum AnimeName {
   JoJo,
@@ -26,14 +28,17 @@ function getCharacter() {
 @Component({
   selector: 'app-experimental-form-my',
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    KeyValuePipe
   ],
   templateUrl: './experimental-form-my.component.html',
   styleUrl: './experimental-form-my.component.scss',
 })
 export class ExperimentalFormMyComponent {
   readonly AnimeName = AnimeName;
+  mockService = inject(MockService);
 
+  features: Features[] = [];
   form = new FormGroup({
     name: new FormControl<AnimeName>(AnimeName.JoJo, Validators.required),
     review: new FormControl<string>('', [
@@ -42,6 +47,7 @@ export class ExperimentalFormMyComponent {
     ]),
     contacts: getContactsForm(),
     characters: new FormArray([getCharacter()]),
+    feature: new FormRecord({})
   });
 
   constructor() {
@@ -53,6 +59,19 @@ export class ExperimentalFormMyComponent {
         this.form.controls.characters.clear();
         this.form.controls.review.reset();
       });
+
+    this.mockService.getFeatures()
+      .pipe(takeUntilDestroyed())
+      .subscribe((features) => {
+        this.features = features;
+
+        for (const feature of features) {
+          this.form.controls.feature.addControl(
+            feature.code,
+            new FormControl(feature.value)
+          );
+        }
+      })
   }
 
   onSubmit(event: Event) {
@@ -68,4 +87,6 @@ export class ExperimentalFormMyComponent {
   deleteCharacter(index: number) {
     this.form.controls.characters.removeAt(index, {emitEvent: false});
   }
+
+  sort = () => 0;
 }
