@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 
 enum AnimeName {
@@ -12,6 +12,14 @@ function getContactsForm() {
   return new FormGroup({
     email: new FormControl<string>('', Validators.required),
     telegram: new FormControl<string>('', Validators.required),
+  });
+}
+
+function getCharacters() {
+  return new FormGroup({
+    name: new FormControl('', Validators.required),
+    depth: new FormControl('', [Validators.required, Validators.min(0), Validators.max(10)]),
+    history: new FormControl('', [Validators.required, Validators.min(0), Validators.max(10)]),
   });
 }
 
@@ -32,7 +40,8 @@ export class ExperimentalFormMyComponent {
       Validators.required,
       Validators.minLength(3)
     ]),
-    contacts: getContactsForm()
+    contacts: getContactsForm(),
+    characters: new FormArray([getCharacters()]),
   });
 
   constructor() {
