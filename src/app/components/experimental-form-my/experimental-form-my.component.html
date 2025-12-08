@@ -25,6 +25,46 @@
     <small class="mb20">* Это поле обязательно</small>
   }
 
+  <div class="mb20">
+    <div class="characters__header">
+      <h5 class="mb16">Оценка отдельных персонажей</h5>
+      <button class="btn characters__header-btn" (click)="addCharacter()">+</button>
+    </div>
+
+    @for (char of form.controls.characters.controls; track char) {
+      <div class="character" [formGroup]="char">
+        <label class="tt-control-label mb16">
+          <span class="tt-form-label-text">Имя персонажа</span>
+          <input
+            type="text"
+            formControlName="name"
+            class="tt-input"
+          >
+        </label>
+
+        <div class="form-grid">
+          <label class="tt-control-label mb16">
+            <span class="tt-form-label-text">Глубина</span>
+            <input
+              type="number"
+              formControlName="depth"
+              class="tt-input"
+            >
+          </label>
+
+          <label class="tt-control-label mb16">
+            <span class="tt-form-label-text">История</span>
+            <input
+              type="number"
+              formControlName="history"
+              class="tt-input"
+            >
+          </label>
+        </div>
+      </div>
+    }
+  </div>
+
   <div formGroupName="contacts">
     <h5 class="mb16">Контакты</h5>
     <label class="tt-control-label mb16">
@@ -54,48 +94,11 @@
     }
   </div>
 
-  <div class="mb20">
-    <div class="characters__header">
-      <h5 class="mb16">Оценка отдельных персонажей</h5>
-      <button class="btn characters__header-btn" (click)="addCharacter()">+</button>
-    </div>
-
-    @for (char of form.controls.characters.controls; track char) {
-      <div class="character" [formGroup]="char">
-        <label class="tt-control-label mb16">
-          <span class="tt-form-label-text">Имя персонажа</span>
-          <input
-            type="text"
-            formControlName="name"
-            class="tt-input"
-          >
-        </label>
-
-        <label class="tt-control-label mb16">
-          <span class="tt-form-label-text">Глубина</span>
-          <input
-            type="number"
-            formControlName="depth"
-            class="tt-input"
-          >
-        </label>
-
-        <label class="tt-control-label mb16">
-          <span class="tt-form-label-text">История</span>
-          <input
-            type="number"
-            formControlName="history"
-            class="tt-input"
-          >
-        </label>
-      </div>
-    }
-  </div>
-
   <button
     class="btn"
     type="submit"
-  >Отправить
+  >
+    Отправить
   </button>
 
 </form>
