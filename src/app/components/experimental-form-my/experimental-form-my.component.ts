@@ -50,6 +50,7 @@ export class ExperimentalFormMyComponent {
         takeUntilDestroyed()
       )
       .subscribe(() => {
+        this.form.controls.characters.clear();
         this.form.controls.review.reset();
       });
   }
@@ -61,6 +62,10 @@ export class ExperimentalFormMyComponent {
   }
 
   addCharacter() {
-    this.form.controls.characters.push(getCharacter());
+    this.form.controls.characters.push(getCharacter(), {emitEvent: false});
+  }
+
+  deleteCharacter(index: number) {
+    this.form.controls.characters.removeAt(index, {emitEvent: false});
   }
 }
