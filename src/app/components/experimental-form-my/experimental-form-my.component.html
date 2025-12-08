@@ -35,6 +35,9 @@
         class="tt-input"
       >
     </label>
+    @if (form.controls.contacts.controls.email.touched && form.controls.contacts.controls.email.hasError('required')) {
+      <small class="mb20">* Это поле обязательно</small>
+    }
 
     <label class="tt-control-label mb16">
       <span class="tt-form-label-text">Телеграм</span>
@@ -44,6 +47,9 @@
         class="tt-input"
       >
     </label>
+    @if (form.controls.contacts.controls.telegram.touched && form.controls.contacts.controls.telegram.hasError('required')) {
+      <small class="mb20">* Это поле обязательно</small>
+    }
   </div>
 
   <button

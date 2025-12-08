@@ -10,8 +10,8 @@ enum AnimeName {
 
 function getContactsForm() {
   return new FormGroup({
-    email: new FormControl<string>(''),
-    telegram: new FormControl<string>(''),
+    email: new FormControl<string>('', Validators.required),
+    telegram: new FormControl<string>('', Validators.required),
   });
 }
 
