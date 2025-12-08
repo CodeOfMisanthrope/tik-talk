@@ -12,7 +12,7 @@
     </select>
   </label>
 
-  <label class="tt-control-label mb20">
+  <label class="tt-control-label mb32">
     <span class="tt-form-label-text">Отзыв</span>
     <input
       type="text"
@@ -28,7 +28,11 @@
   <div class="mb20">
     <div class="characters__header">
       <h5 class="mb16">Оценка отдельных персонажей</h5>
-      <button class="btn characters__header-btn" (click)="addCharacter()">+</button>
+      <button
+        class="btn characters__header-btn"
+        type="button"
+        (click)="addCharacter()"
+      >+</button>
     </div>
 
     @for (char of form.controls.characters.controls; track char) {
