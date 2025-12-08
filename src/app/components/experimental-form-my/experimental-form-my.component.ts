@@ -18,8 +18,8 @@ function getContactsForm() {
 function getCharacters() {
   return new FormGroup({
     name: new FormControl('', Validators.required),
-    depth: new FormControl('', [Validators.required, Validators.min(0), Validators.max(10)]),
-    history: new FormControl('', [Validators.required, Validators.min(0), Validators.max(10)]),
+    depth: new FormControl(0, [Validators.required, Validators.min(0), Validators.max(10)]),
+    history: new FormControl(0, [Validators.required, Validators.min(0), Validators.max(10)]),
   });
 }
 
