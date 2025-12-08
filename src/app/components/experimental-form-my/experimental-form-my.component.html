@@ -12,7 +12,7 @@
       </select>
     </label>
 
-  <label class="tt-control-label mb16">
+  <label class="tt-control-label mb20">
     <span class="tt-form-label-text">Отзыв</span>
     <input
       type="text"
@@ -21,12 +21,26 @@
     >
   </label>
 
+  @if (form.controls.review.touched && form.controls.review.hasError('required')) {
+    <small class="mb20">* Это поле обязательно</small>
+  }
+
   <div formGroupName="contacts">
+    <h5 class="mb16">Контакты</h5>
     <label class="tt-control-label mb16">
       <span class="tt-form-label-text">Почта</span>
       <input
         type="email"
         formControlName="email"
+        class="tt-input"
+      >
+    </label>
+
+    <label class="tt-control-label mb16">
+      <span class="tt-form-label-text">Телеграм</span>
+      <input
+        type="text"
+        formControlName="telegram"
         class="tt-input"
       >
     </label>
