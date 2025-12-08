@@ -7,7 +7,7 @@ import {ExperimentalFormMyComponent} from './components/experimental-form-my/exp
   selector: 'app-root',
   imports: [
     RouterOutlet,
-    ExperimentalComponent,
+    // ExperimentalComponent,
     ExperimentalFormMyComponent,
   ],
   templateUrl: './app.html',
