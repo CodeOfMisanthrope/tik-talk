@@ -1,16 +1,16 @@
 <form class="form__container" [formGroup]="form" (ngSubmit)="onSubmit($event)">
   <h4 class="h4 mb32">Отзыв о Аниме</h4>
 
-    <label class="tt-control-label mb16">
-      <select class="tt-input tv" id="tvType" formControlName="name">
-        <option value="" disabled selected class="placeholder" [value]="AnimeName.JoJo">
-          Выберите аниме
-        </option>
-        <option [value]="AnimeName.JoJo">JoJo</option>
-        <option [value]="AnimeName.Berserk">Berserk</option>
-        <option [value]="AnimeName.One_Piece">One Piece</option>
-      </select>
-    </label>
+  <label class="tt-control-label mb16">
+    <select class="tt-input tv" id="tvType" formControlName="name">
+      <option value="" disabled selected class="placeholder" [value]="AnimeName.JoJo">
+        Выберите аниме
+      </option>
+      <option [value]="AnimeName.JoJo">JoJo</option>
+      <option [value]="AnimeName.Berserk">Berserk</option>
+      <option [value]="AnimeName.One_Piece">One Piece</option>
+    </select>
+  </label>
 
   <label class="tt-control-label mb20">
     <span class="tt-form-label-text">Отзыв</span>
@@ -35,7 +35,8 @@
         class="tt-input"
       >
     </label>
-    @if (form.controls.contacts.controls.email.touched && form.controls.contacts.controls.email.hasError('required')) {
+    @if (form.controls.contacts.controls.email.touched &&
+    form.controls.contacts.controls.email.hasError('required')) {
       <small class="mb20">* Это поле обязательно</small>
     }
 
@@ -47,7 +48,8 @@
         class="tt-input"
       >
     </label>
-    @if (form.controls.contacts.controls.telegram.touched && form.controls.contacts.controls.telegram.hasError('required')) {
+    @if (form.controls.contacts.controls.telegram.touched &&
+    form.controls.contacts.controls.telegram.hasError('required')) {
       <small class="mb20">* Это поле обязательно</small>
     }
   </div>
@@ -55,6 +57,7 @@
   <button
     class="btn"
     type="submit"
-  >Отправить</button>
+  >Отправить
+  </button>
 
 </form>
