@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 
 enum AnimeName {
   JoJo,
@@ -35,7 +36,13 @@ export class ExperimentalFormMyComponent {
   });
 
   constructor() {
-
+    this.form.controls.name.valueChanges
+      .pipe(
+        takeUntilDestroyed()
+      )
+      .subscribe(() => {
+        this.form.controls.review.reset();
+      });
   }
 
   onSubmit(event: Event) {
