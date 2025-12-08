@@ -54,6 +54,41 @@
     }
   </div>
 
+  <div class="mb20">
+    <h5 class="mb16">Оценка отдельных персонажей</h5>
+
+    @for (char of form.controls.characters.controls; track char) {
+      <div class="character" [formGroup]="char">
+        <label class="tt-control-label mb16">
+          <span class="tt-form-label-text">Имя персонажа</span>
+          <input
+            type="text"
+            formControlName="name"
+            class="tt-input"
+          >
+        </label>
+
+        <label class="tt-control-label mb16">
+          <span class="tt-form-label-text">Глубина</span>
+          <input
+            type="number"
+            formControlName="depth"
+            class="tt-input"
+          >
+        </label>
+
+        <label class="tt-control-label mb16">
+          <span class="tt-form-label-text">История</span>
+          <input
+            type="number"
+            formControlName="history"
+            class="tt-input"
+          >
+        </label>
+      </div>
+    }
+  </div>
+
   <button
     class="btn"
     type="submit"
