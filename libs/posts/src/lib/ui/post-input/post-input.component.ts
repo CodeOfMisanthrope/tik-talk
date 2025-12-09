@@ -8,10 +8,12 @@ import {
   Renderer2,
 } from '@angular/core';
 import { NgIf } from '@angular/common';
-import { AvatarCircleComponent } from '../../../common-ui/avatar-circle/avatar-circle.component';
-import { SvgIconComponent } from '../../../common-ui/svg-icon/svg-icon.component';
+// import { AvatarCircleComponent } from '../../../common-ui/avatar-circle/avatar-circle.component';
+// import { SvgIconComponent } from '../../../common-ui/svg-icon/svg-icon.component';
+import {AvatarCircleComponent, SvgIconComponent} from '@tt/common-ui';
 import { ProfileService } from '../../../data/services/profile.service';
-import { PostService } from '../../../data/services/post.service';
+// import { PostService } from '../../../data/services/post.service';
+import {PostService} from '../../data';
 import { FormsModule } from '@angular/forms';
 import { firstValueFrom } from 'rxjs';
 import { Deprecated } from '../../../core/decorators/deprecated';
