@@ -8,7 +8,8 @@ import { AsyncPipe, NgForOf } from '@angular/common';
 import { SvgIconComponent } from '../../common-ui/svg-icon/svg-icon.component';
 import { SubscriberCardComponent } from '../../common-ui/sidebar/subsriber-card/subscriber-card.component';
 import { ImgUrlPipe } from '../../helpers/pipes/img-url-pipe';
-import { PostFeedComponent } from './post-feed/post-feed.component';
+// import { PostFeedComponent } from './post-feed/post-feed.component';
+import {PostFeedComponent} from "@tt/posts";
 import { ChatsService } from '../../data/services/chats.service';
 
 @Component({
