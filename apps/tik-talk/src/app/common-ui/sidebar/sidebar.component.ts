@@ -1,7 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { AsyncPipe, JsonPipe, NgForOf } from '@angular/common';
-import { SvgIconComponent } from '../svg-icon/svg-icon.component';
+// import { SvgIconComponent } from '../svg-icon/svg-icon.component';
+import {SvgIconComponent} from '@tt/common-ui';
 import { ProfileService } from '../../data/services/profile.service';
 import { SubscriberCardComponent } from './subsriber-card/subscriber-card.component';
 import { firstValueFrom } from 'rxjs';

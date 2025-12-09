@@ -17,7 +17,8 @@ import {ProfileService} from '@tt/profile';
 import {PostService} from '../../data';
 import { FormsModule } from '@angular/forms';
 import { firstValueFrom } from 'rxjs';
-import { Deprecated } from '../../../core/decorators/deprecated';
+import {Deprecated} from '@tt/shared';
+// import { Deprecated } from '../../../core/decorators/deprecated';
 
 @Component({
   selector: 'app-post-input',

@@ -1,5 +1,6 @@
 import { Component, input } from '@angular/core';
-import { AvatarCircleComponent } from '../../../common-ui/avatar-circle/avatar-circle.component';
+// import { AvatarCircleComponent } from '../../../common-ui/avatar-circle/avatar-circle.component';
+import {AvatarCircleComponent} from '@tt/common-ui';
 import { LastMessageRes } from '../../../data/interfaces/chats.interface';
 
 @Component({

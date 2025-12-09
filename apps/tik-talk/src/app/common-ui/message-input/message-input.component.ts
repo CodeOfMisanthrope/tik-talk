@@ -7,20 +7,21 @@ import {
   Output,
   Renderer2,
 } from '@angular/core';
-import { AvatarCircleComponent } from '../avatar-circle/avatar-circle.component';
+// import { AvatarCircleComponent } from '../avatar-circle/avatar-circle.component';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
-import { SvgIconComponent } from '../svg-icon/svg-icon.component';
+// import { SvgIconComponent } from '../svg-icon/svg-icon.component';
+import {AvatarCircleComponent, SvgIconComponent} from '@tt/common-ui';
 import { PostService } from '../../data/services/post.service';
 import { ProfileService } from '../../data/services/profile.service';
 import { Deprecated } from '../../core/decorators/deprecated';
 import { firstValueFrom } from 'rxjs';
 
 @Component({
-  selector: 'app-message-input',
   imports: [AvatarCircleComponent, FormsModule, NgIf, SvgIconComponent],
-  templateUrl: './message-input.component.html',
+  selector: 'app-message-input',
   styleUrl: './message-input.component.scss',
+  templateUrl: './message-input.component.html',
 })
 export class MessageInputComponent {
   r2 = inject(Renderer2);

@@ -10,8 +10,10 @@ import {
 // import { PostComponent } from '../post/post.component';
 // import { PostService } from '../../../data/services/post.service';
 import { firstValueFrom } from 'rxjs';
-import { Throttle } from '../../../core/decorators/throttle';
-import { ProfileService } from '../../../data/services/profile.service';
+// import { Throttle } from '../../../core/decorators/throttle';
+import {Throttle} from '@tt/shared';
+// import { ProfileService } from '../../../data/services/profile.service';
+import {ProfileService} from '@tt/profile';
 import {PostInputComponent} from '../../ui';
 import {PostComponent} from '@tt/posts';
 import {PostService} from '../../data';
