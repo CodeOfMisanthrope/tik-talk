@@ -55,6 +55,7 @@ export class SettingsPageComponent {
 
     // @ts-ignore
     firstValueFrom(
+        // @ts-ignore
       this.profileService.patchProfile({
         ...this.form.value,
         stack: this.splitStack(this.form.value.stack),
