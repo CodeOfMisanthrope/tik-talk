@@ -1,7 +1,8 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { Profile } from '../interfaces/profile.interface';
 import { HttpClient } from '@angular/common/http';
-import { Pageable } from '../interfaces/pageable.interface';
+// import { Pageable } from '../interfaces/pageable.interface';
+import {Pageable} from '@tt/shared';
 import { map, tap } from 'rxjs';
 
 @Injectable({
