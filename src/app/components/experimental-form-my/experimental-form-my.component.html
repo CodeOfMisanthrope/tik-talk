@@ -1,0 +1,124 @@
+<form class="form__container" [formGroup]="form" (ngSubmit)="onSubmit($event)">
+  <h4 class="h4 mb32">Отзыв о Аниме</h4>
+
+  <label class="tt-control-label mb16">
+    <select class="tt-input tv" id="tvType" formControlName="name">
+      <option value="" disabled selected class="placeholder" [value]="AnimeName.JoJo">
+        Выберите аниме
+      </option>
+      <option [value]="AnimeName.JoJo">JoJo</option>
+      <option [value]="AnimeName.Berserk">Berserk</option>
+      <option [value]="AnimeName.One_Piece">One Piece</option>
+    </select>
+  </label>
+
+  <label class="tt-control-label mb32">
+    <span class="tt-form-label-text">Отзыв</span>
+    <input
+      type="text"
+      formControlName="review"
+      class="tt-input"
+    >
+  </label>
+
+  @if (form.controls.review.touched && form.controls.review.hasError('required')) {
+    <small class="mb20">* Это поле обязательно</small>
+  }
+
+  <div class="mb20">
+    <div class="characters__header">
+      <h5 class="mb16">Оценка отдельных персонажей</h5>
+      <button
+        class="btn characters__header-btn"
+        type="button"
+        (click)="addCharacter()"
+      >+</button>
+    </div>
+
+    @for (char of form.controls.characters.controls; track char; let i = $index) {
+      <div class="character mb32" [formGroup]="char">
+        <label class="tt-control-label mb16">
+          <span class="tt-form-label-text">Имя персонажа</span>
+          <input
+            type="text"
+            formControlName="name"
+            class="tt-input"
+          >
+        </label>
+
+        <div class="form-grid mb16">
+          <label class="tt-control-label">
+            <span class="tt-form-label-text">Глубина</span>
+            <input
+              type="number"
+              formControlName="depth"
+              class="tt-input"
+            >
+          </label>
+
+          <label class="tt-control-label">
+            <span class="tt-form-label-text">История</span>
+            <input
+              type="number"
+              formControlName="history"
+              class="tt-input"
+            >
+          </label>
+        </div>
+
+        <button class="btn" type="button" (click)="deleteCharacter(i)">Удалить</button>
+      </div>
+    }
+  </div>
+
+  <div formGroupName="contacts">
+    <h5 class="mb16">Контакты</h5>
+    <label class="tt-control-label mb16">
+      <span class="tt-form-label-text">Почта</span>
+      <input
+        type="email"
+        formControlName="email"
+        class="tt-input"
+      >
+    </label>
+    @if (form.controls.contacts.controls.email.touched &&
+    form.controls.contacts.controls.email.hasError('required')) {
+      <small class="mb20">* Это поле обязательно</small>
+    }
+
+    <label class="tt-control-label mb16">
+      <span class="tt-form-label-text">Телеграм</span>
+      <input
+        type="text"
+        formControlName="telegram"
+        class="tt-input"
+      >
+    </label>
+    @if (form.controls.contacts.controls.telegram.touched &&
+    form.controls.contacts.controls.telegram.hasError('required')) {
+      <small class="mb20">* Это поле обязательно</small>
+    }
+  </div>
+
+  <div class="mb32" [formGroup]="form.controls.feature">
+    <h5 class="mb16">Дополнительно</h5>
+
+    <div style="display: grid; grid-gap: 16px;">
+      @for (control of form.controls.feature.controls | keyvalue: sort; track control; let i = $index) {
+        <label>
+          {{ features[i].label }}
+          <input type="checkbox" [formControlName]="control.key">
+        </label>
+      }
+    </div>
+
+  </div>
+
+  <button
+    class="btn"
+    type="submit"
+  >
+    Отправить
+  </button>
+
+</form>
