@@ -6,12 +6,15 @@ import {
   inject,
   Renderer2,
 } from '@angular/core';
-import { PostInputComponent } from '../post-input/post-input.component';
-import { PostComponent } from '../post/post.component';
-import { PostService } from '../../../data/services/post.service';
+// import { PostInputComponent } from '../../ui/post-input/post-input.component';
+// import { PostComponent } from '../post/post.component';
+// import { PostService } from '../../../data/services/post.service';
 import { firstValueFrom } from 'rxjs';
 import { Throttle } from '../../../core/decorators/throttle';
 import { ProfileService } from '../../../data/services/profile.service';
+import {PostInputComponent} from '../../ui';
+import {PostComponent} from '@tt/posts';
+import {PostService} from '../../data';
 
 @Component({
   selector: 'app-post-feed',

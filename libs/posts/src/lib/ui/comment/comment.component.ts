@@ -1,5 +1,6 @@
 import { Component, input } from '@angular/core';
-import { PostComment } from '../../../../data/interfaces/post.interface';
+// import { PostComment } from '../../../../data/interfaces/post.interface';
+import {PostComment} from '../../data';
 import { AvatarCircleComponent } from '../../../../common-ui/avatar-circle/avatar-circle.component';
 import { TimeAgoPipe } from '../../../../helpers/pipes/time-ago.pipe';
 
