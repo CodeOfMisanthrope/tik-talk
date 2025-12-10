@@ -15,7 +15,8 @@ import {Throttle} from '@tt/shared';
 // import { ProfileService } from '../../../data/services/profile.service';
 import {ProfileService} from '@tt/profile';
 import {PostInputComponent} from '../../ui';
-import {PostComponent} from '@tt/posts';
+// import {PostComponent} from '@tt/posts';
+import {PostComponent} from '../post/post.component';
 import {PostService} from '../../data';
 
 @Component({
