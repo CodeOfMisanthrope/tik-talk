@@ -1,6 +1,7 @@
 import { Component, inject, OnDestroy } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ProfileService } from '../../../data/services/profile.service';
+// import { ProfileService } from '../../../data/services/profile.service';
+import {ProfileService} from '@tt/profile';
 import { debounceTime, startWith, Subscription, switchMap } from 'rxjs';
 
 @Component({

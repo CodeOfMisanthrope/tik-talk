@@ -12,7 +12,8 @@ import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
 // import { SvgIconComponent } from '../svg-icon/svg-icon.component';
 import {AvatarCircleComponent, SvgIconComponent} from '@tt/common-ui';
-import { ProfileService } from '../../data/services/profile.service';
+// import { ProfileService } from '../../data/services/profile.service';
+import {ProfileService} from '@tt/profile';
 
 @Component({
   imports: [AvatarCircleComponent, FormsModule, NgIf, SvgIconComponent],

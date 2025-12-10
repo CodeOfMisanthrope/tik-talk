@@ -6,7 +6,8 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { ProfileService } from '../../data/services/profile.service';
+// import { ProfileService } from '../../data/services/profile.service';
+import {ProfileService} from '@tt/profile';
 import { firstValueFrom } from 'rxjs';
 import { AvatarUploadComponent } from './avatar-upload/avatar-upload.component';
 

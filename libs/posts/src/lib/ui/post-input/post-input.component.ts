@@ -34,6 +34,10 @@ export class PostInputComponent {
   postId = input<number>(0);
   profile = inject(ProfileService).me;
 
+  ngOnInit() {
+    console.log(this.profile());
+  }
+
   @Output() created = new EventEmitter<{ postText: string }>();
 
   @HostBinding('class.comment')
