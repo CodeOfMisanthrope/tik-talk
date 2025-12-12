@@ -5,9 +5,9 @@ import { toObservable } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import {ImgUrlPipe, SvgIconComponent} from '@tt/common-ui';
 import {PostFeedComponent} from "@tt/posts";
+import {ChatsService} from '@tt/chats';
 import {ProfileService} from '../../data';
 import { ProfileHeaderComponent } from '../../common-ui/profile-header/profile-header.component';
-import { ChatsService } from '../../data/services/chats.service';
 
 @Component({
   selector: 'app-profile-page',
