@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { timeAgo } from '../../utils/date';
+import {timeAgo} from '@tt/shared';
 
 @Pipe({
   name: 'timeAgo',
