@@ -3,7 +3,7 @@ import { ChatWorkspaceMessageComponent } from './chat-workspace-message/chat-wor
 import {MessageInputComponent} from '../../../ui';
 import {Chat, ChatsService} from '@tt/chats';
 import { firstValueFrom, interval, switchMap, timer } from 'rxjs';
-import {groupMessagesByTimeZone} from '@tt/shared';
+import {groupMessagesByTimeZone} from '../../../utils/data';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
