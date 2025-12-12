@@ -1,17 +1,12 @@
+import { AsyncPipe, NgForOf } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
-import { ProfileHeaderComponent } from '../../common-ui/profile-header/profile-header.component';
-// import { ProfileService } from '../../data/services/profile.service';
-import {ProfileService} from '@tt/profile';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { firstValueFrom, switchMap } from 'rxjs';
 import { toObservable } from '@angular/core/rxjs-interop';
-import { AsyncPipe, NgForOf } from '@angular/common';
-// import { SvgIconComponent } from '../../common-ui/svg-icon/svg-icon.component';
-import {SvgIconComponent} from '@tt/common-ui';
-import { SubscriberCardComponent } from '../../common-ui/sidebar/subsriber-card/subscriber-card.component';
-import { ImgUrlPipe } from '../../helpers/pipes/img-url-pipe';
-// import { PostFeedComponent } from './post-feed/post-feed.component';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import {ImgUrlPipe, SvgIconComponent} from '@tt/common-ui';
 import {PostFeedComponent} from "@tt/posts";
+import {ProfileService} from '../../data';
+import { ProfileHeaderComponent } from '../../common-ui/profile-header/profile-header.component';
 import { ChatsService } from '../../data/services/chats.service';
 
 @Component({
