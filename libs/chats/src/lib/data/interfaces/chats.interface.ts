@@ -1,4 +1,3 @@
-// import { Profile } from './profile.interface';
 import {Profile} from '@tt/profile';
 
 export interface Chat {
