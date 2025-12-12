@@ -6,16 +6,10 @@ import {
   inject,
   Renderer2,
 } from '@angular/core';
-// import { PostInputComponent } from '../../ui/post-input/post-input.component';
-// import { PostComponent } from '../post/post.component';
-// import { PostService } from '../../../data/services/post.service';
 import { firstValueFrom } from 'rxjs';
-// import { Throttle } from '../../../core/decorators/throttle';
-import {Throttle} from '@tt/shared';
-// import { ProfileService } from '../../../data/services/profile.service';
-import {ProfileService} from '@tt/profile';
+import {GlobalStoreService, Throttle} from '@tt/shared';
+// import {ProfileService} from '@tt/profile';
 import {PostInputComponent} from '../../ui';
-// import {PostComponent} from '@tt/posts';
 import {PostComponent} from '../post/post.component';
 import {PostService} from '../../data';
 
@@ -31,7 +25,7 @@ export class PostFeedComponent implements AfterViewInit {
   r2 = inject(Renderer2);
 
   feed = inject(PostService).posts;
-  profile = inject(ProfileService).me;
+  profile = inject(GlobalStoreService).me;
 
   @Throttle(300)
   @HostListener('window:resize')

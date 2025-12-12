@@ -8,17 +8,11 @@ import {
   Renderer2,
 } from '@angular/core';
 import { NgIf } from '@angular/common';
-// import { AvatarCircleComponent } from '../../../common-ui/avatar-circle/avatar-circle.component';
-// import { SvgIconComponent } from '../../../common-ui/svg-icon/svg-icon.component';
 import {AvatarCircleComponent, SvgIconComponent} from '@tt/common-ui';
-// import { ProfileService } from '../../../data/services/profile.service';
-import {ProfileService} from '@tt/profile';
-// import { PostService } from '../../../data/services/post.service';
 import {PostService} from '../../data';
 import { FormsModule } from '@angular/forms';
 import { firstValueFrom } from 'rxjs';
-import {Deprecated} from '@tt/shared';
-// import { Deprecated } from '../../../core/decorators/deprecated';
+import {Deprecated, GlobalStoreService} from '@tt/shared';
 
 @Component({
   selector: 'app-post-input',
@@ -32,7 +26,7 @@ export class PostInputComponent {
 
   isCommentInput = input(false);
   postId = input<number>(0);
-  profile = inject(ProfileService).me;
+  profile = inject(GlobalStoreService).me;
 
   @Output() created = new EventEmitter<{ postText: string }>();
 
