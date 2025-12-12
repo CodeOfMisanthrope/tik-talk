@@ -1,5 +1,5 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { Profile } from '../interfaces/profile.interface';
+import { Profile } from '../../../../../interfaces/src/lib/profile/profile.interface';
 import { HttpClient } from '@angular/common/http';
 // import { Pageable } from '../interfaces/pageable.interface';
 import {Pageable} from '@tt/shared';
