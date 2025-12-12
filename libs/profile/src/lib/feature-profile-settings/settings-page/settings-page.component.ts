@@ -9,7 +9,7 @@ import {
 // import { ProfileService } from '../../data/services/profile.service';
 import {ProfileService} from '@tt/profile';
 import { firstValueFrom } from 'rxjs';
-import { AvatarUploadComponent } from './avatar-upload/avatar-upload.component';
+import { AvatarUploadComponent } from '../../ui/avatar-upload/avatar-upload.component';
 
 @Component({
   selector: 'app-settings-page',
