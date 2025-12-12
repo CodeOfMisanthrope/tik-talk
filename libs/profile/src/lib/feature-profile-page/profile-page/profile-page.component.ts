@@ -5,7 +5,7 @@ import { toObservable } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import {ImgUrlPipe, SvgIconComponent} from '@tt/common-ui';
 import {PostFeedComponent} from "@tt/posts";
-import {ChatsService} from '@tt/chats';
+// import {ChatsService} from '@tt/chats';
 import {ProfileService} from '../../data';
 import {ProfileHeaderComponent} from '../../ui/profile-header/profile-header.component';
 
@@ -24,7 +24,7 @@ import {ProfileHeaderComponent} from '../../ui/profile-header/profile-header.com
 })
 export class ProfilePageComponent {
   profileService = inject(ProfileService);
-  chatsService = inject(ChatsService);
+  // chatsService = inject(ChatsService);
   route = inject(ActivatedRoute);
   router = inject(Router);
 
@@ -43,8 +43,9 @@ export class ProfilePageComponent {
   );
 
   async sendMessage(userId: number) {
-    firstValueFrom(this.chatsService.createChat(userId)).then((res) => {
-      this.router.navigate(['/chats', res.id]);
-    });
+      this.router.navigate(['/chats', 'new'], { queryParams: {userId}});
+    // firstValueFrom(this.chatsService.createChat(userId)).then((res) => {
+    //   this.router.navigate(['/chats', res.id]);
+    // });
   }
 }
