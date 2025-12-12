@@ -1,14 +1,10 @@
 import { Routes } from '@angular/router';
-import { LayoutComponent } from './common-ui/layout/layout.component';
-import { LoginPageComponent } from './pages/login-page/login-page.component';
-// import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
-import {ProfilePageComponent} from '@tt/profile';
-import { SearchPageComponent } from './pages/search-page/search-page.component';
-import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
-// import { canActivateAuth } from './auth/access.guard';
+import { LayoutComponent } from '../../../../libs/common-ui/src/lib/components/layout/layout.component';
+import { LoginPageComponent } from '../../../../libs/auth/src/lib/feature-login/login-page/login-page.component';
 import {canActivateAuth} from "@tt/auth";
-import { ChatsPageComponent } from './pages/chats-page/chats-page.component';
-import { chatsRoutes } from './pages/chats-page/chatsRoutes';
+import {chatsRoutes} from '@tt/chats';
+import {ProfilePageComponent, SearchPageComponent} from '@tt/profile';
+import { SettingsPageComponent } from '../../../../libs/profile/src/lib/feature-profile-settings/settings-page/settings-page.component';
 
 export const routes: Routes = [
   {

@@ -1,10 +1,9 @@
 import { Component, computed, DestroyRef, inject, input, OnInit, signal } from '@angular/core';
 import { ChatWorkspaceMessageComponent } from './chat-workspace-message/chat-workspace-message.component';
-import { MessageInputComponent } from '../../../../common-ui/message-input/message-input.component';
-import { ChatsService } from '../../../data/services/chats.service';
-import { Chat, Message } from '../../../data/interfaces/chats.interface';
+import {MessageInputComponent} from '../../../ui';
+import {Chat, ChatsService} from '@tt/chats';
 import { firstValueFrom, interval, switchMap, timer } from 'rxjs';
-import { groupMessagesByTimeZone } from '../../../../utils/date';
+import {groupMessagesByTimeZone} from '@tt/shared';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({

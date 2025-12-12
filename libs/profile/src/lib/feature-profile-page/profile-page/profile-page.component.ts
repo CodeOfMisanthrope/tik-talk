@@ -7,7 +7,7 @@ import {ImgUrlPipe, SvgIconComponent} from '@tt/common-ui';
 import {PostFeedComponent} from "@tt/posts";
 import {ChatsService} from '@tt/chats';
 import {ProfileService} from '../../data';
-import { ProfileHeaderComponent } from '../../common-ui/profile-header/profile-header.component';
+import {ProfileHeaderComponent} from '../../ui/profile-header/profile-header.component';
 
 @Component({
   selector: 'app-profile-page',
