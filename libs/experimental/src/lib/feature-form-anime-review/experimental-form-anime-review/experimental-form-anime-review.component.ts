@@ -33,12 +33,12 @@ function getCharacter() {
 }
 
 @Component({
-  selector: 'app-experimental-form-my',
+  selector: 'app-experimental-form-anime-review',
   imports: [ReactiveFormsModule, KeyValuePipe],
-  templateUrl: './experimental-form-my.component.html',
-  styleUrl: './experimental-form-my.component.scss',
+  templateUrl: './experimental-form-anime-review.component.html',
+  styleUrl: './experimental-form-anime-review.component.scss',
 })
-export class ExperimentalFormMyComponent {
+export class ExperimentalFormAnimeReviewComponent {
   readonly AnimeName = AnimeName;
   mockService = inject(MockService);
 
