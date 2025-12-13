@@ -37,12 +37,12 @@ function getAddressForm(initialValue: Address = {}) {
 }
 
 @Component({
-  selector: 'app-experimental',
+  selector: 'app-experimental-form-tv',
   imports: [ReactiveFormsModule],
-  templateUrl: './experimental.component.html',
-  styleUrl: './experimental.component.scss',
+  templateUrl: './experimental-from-tv.component.html',
+  styleUrl: './experimental-from-tv.component.scss',
 })
-export class ExperimentalComponent {
+export class ExperimentalFromTvComponent {
   ReceiverType = ReceiverType;
   // mockService = inject(MockS)
   // features: Feature[]
