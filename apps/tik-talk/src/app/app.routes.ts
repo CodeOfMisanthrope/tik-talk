@@ -3,6 +3,7 @@ import {canActivateAuth, LoginPageComponent} from "@tt/auth";
 import {chatsRoutes} from '@tt/chats';
 import { LayoutComponent } from '@tt/layout';
 import {ProfilePageComponent, SearchPageComponent, SettingsPageComponent} from '@tt/profile';
+import {ExperimentalPageComponent} from '@tt/experimental';
 
 export const routes: Routes = [
   {
@@ -17,6 +18,7 @@ export const routes: Routes = [
         path: 'chats',
         loadChildren: () => chatsRoutes,
       },
+      { path: 'experimental', component: ExperimentalPageComponent },
     ],
     canActivate: [canActivateAuth],
   },

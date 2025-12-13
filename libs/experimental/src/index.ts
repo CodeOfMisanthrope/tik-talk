@@ -1,1 +1,1 @@
-export * from './lib/experimental/experimental.component';
+export * from './lib/feature-experimental-page';
