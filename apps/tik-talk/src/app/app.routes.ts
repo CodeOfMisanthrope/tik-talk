@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
-import {canActivateAuth, LoginPageComponent} from "@tt/auth";
-import {chatsRoutes} from '@tt/chats';
+import { canActivateAuth, LoginPageComponent } from '@tt/auth';
+import { chatsRoutes } from '@tt/chats';
+import { experimentalRoutes } from '@tt/experimental';
 import { LayoutComponent } from '@tt/layout';
-import {ProfilePageComponent, SearchPageComponent, SettingsPageComponent} from '@tt/profile';
-import {ExperimentalPageComponent} from '@tt/experimental';
+import { ProfilePageComponent, SearchPageComponent, SettingsPageComponent } from '@tt/profile';
 
 export const routes: Routes = [
   {
@@ -14,11 +14,8 @@ export const routes: Routes = [
       { path: 'profile/:id', component: ProfilePageComponent },
       { path: 'settings', component: SettingsPageComponent },
       { path: 'search', component: SearchPageComponent },
-      {
-        path: 'chats',
-        loadChildren: () => chatsRoutes,
-      },
-      { path: 'experimental', component: ExperimentalPageComponent },
+      { path: 'chats', loadChildren: () => chatsRoutes },
+      { path: 'experimental', loadChildren: () => experimentalRoutes },
     ],
     canActivate: [canActivateAuth],
   },
