@@ -17,6 +17,12 @@ enum AnimeName {
   One_Piece,
 }
 
+interface Character {
+  name: FormControl<string | null>,
+  depth: FormControl<number | null>,
+  history: FormControl<number | null>
+}
+
 function getContactsForm() {
   return new FormGroup({
     email: new FormControl<string>('', Validators.required),
@@ -24,7 +30,7 @@ function getContactsForm() {
   });
 }
 
-function getCharacter() {
+function getCharacter(): FormGroup<Character> {
   return new FormGroup({
     name: new FormControl('', Validators.required),
     depth: new FormControl(0, [Validators.required, Validators.min(0), Validators.max(10)]),
@@ -47,7 +53,7 @@ export class ExperimentalFormAnimeReviewComponent {
     name: new FormControl<AnimeName>(AnimeName.JoJo, Validators.required),
     review: new FormControl<string>('', [Validators.required, Validators.minLength(3)]),
     contacts: getContactsForm(),
-    characters: new FormArray([getCharacter()]),
+    characters: new FormArray<FormGroup<Character>>([]),
     feature: new FormRecord({}),
   });
 
