@@ -4,4 +4,9 @@ import {profileFeature} from './reducer';
 export const selectFilteredProfiles = createSelector(
   profileFeature.selectProfiles,
   (profiles) => profiles
-)
+);
+
+export const selectedProfileFilterParams = createSelector(
+  profileFeature.selectProfileFilters,
+  (filter) => filter
+);
