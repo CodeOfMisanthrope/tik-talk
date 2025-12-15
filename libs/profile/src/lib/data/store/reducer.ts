@@ -5,8 +5,8 @@ import {ProfileFilterParams} from '../interfaces/profile-filter.interfaces';
 
 export interface ProfileState {
   profiles: Profile[];
-  profileFilters: Record<string, any>;
-  // profileFilters: ProfileFilterParams;
+  // profileFilters: Record<string, any>;
+  profileFilters: ProfileFilterParams;
 }
 
 export const initialState: ProfileState = {
@@ -31,7 +31,6 @@ export const profileFeature = createFeature({
     }),
 
     on(profileActions.filterEvents, (state, payload) => {
-      // console.log('reducer: ', payload.filters);
       return {
         ...state,
         profileFilters: payload.filters,
