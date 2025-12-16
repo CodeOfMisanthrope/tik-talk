@@ -6,12 +6,12 @@ import {
   inject,
   Renderer2,
 } from '@angular/core';
-import { firstValueFrom } from 'rxjs';
+import {Store} from '@ngrx/store';
+import {firstValueFrom} from 'rxjs';
 import {GlobalStoreService, Throttle} from '@tt/shared';
-// import {ProfileService} from '@tt/profile';
 import {PostInputComponent} from '../../ui';
 import {PostComponent} from '../post/post.component';
-import {PostService} from '../../data';
+import {postsActions, PostService, selectPosts} from '../../data';
 
 @Component({
   selector: 'app-post-feed',
@@ -20,11 +20,13 @@ import {PostService} from '../../data';
   styleUrl: './post-feed.component.scss',
 })
 export class PostFeedComponent implements AfterViewInit {
+  store = inject(Store);
   postService = inject(PostService);
   hostElement = inject(ElementRef);
   r2 = inject(Renderer2);
 
-  feed = inject(PostService).posts;
+  // feed = inject(PostService).posts;
+  feed = this.store.selectSignal(selectPosts);
   profile = inject(GlobalStoreService).me;
 
   @Throttle(300)
@@ -35,7 +37,8 @@ export class PostFeedComponent implements AfterViewInit {
   }
 
   constructor() {
-    firstValueFrom(this.postService.fetchPosts());
+    this.store.dispatch(postsActions.postsFetch());
+    // firstValueFrom(this.postService.fetchPosts());
   }
 
   ngAfterViewInit() {
