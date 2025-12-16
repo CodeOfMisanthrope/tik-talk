@@ -58,13 +58,21 @@ export class PostFeedComponent implements AfterViewInit {
   }
 
   createPost(content: string) {
-    firstValueFrom(
-      this.postService.createPost({
+    this.store.dispatch(postsActions.postCreate({
+      post: {
         title: 'Новый пост',
         content,
         authorId: this.profile()!.id,
         communityId: 0,
-      })
-    );
+      }
+    }));
+    // firstValueFrom(
+    //   this.postService.createPost({
+    //     title: 'Новый пост',
+    //     content,
+    //     authorId: this.profile()!.id,
+    //     communityId: 0,
+    //   })
+    // );
   }
 }
