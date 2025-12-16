@@ -6,12 +6,11 @@ import {
   inject,
   Renderer2,
 } from '@angular/core';
-import { firstValueFrom } from 'rxjs';
+import {Store} from '@ngrx/store';
 import {GlobalStoreService, Throttle} from '@tt/shared';
-// import {ProfileService} from '@tt/profile';
 import {PostInputComponent} from '../../ui';
 import {PostComponent} from '../post/post.component';
-import {PostService} from '../../data';
+import {postsActions, PostService, selectPosts} from '../../data';
 
 @Component({
   selector: 'app-post-feed',
@@ -20,11 +19,11 @@ import {PostService} from '../../data';
   styleUrl: './post-feed.component.scss',
 })
 export class PostFeedComponent implements AfterViewInit {
-  postService = inject(PostService);
+  store = inject(Store);
   hostElement = inject(ElementRef);
   r2 = inject(Renderer2);
 
-  feed = inject(PostService).posts;
+  feed = this.store.selectSignal(selectPosts);
   profile = inject(GlobalStoreService).me;
 
   @Throttle(300)
@@ -35,7 +34,8 @@ export class PostFeedComponent implements AfterViewInit {
   }
 
   constructor() {
-    firstValueFrom(this.postService.fetchPosts());
+    this.store.dispatch(postsActions.postsFetch());
+    // firstValueFrom(this.postService.fetchPosts());
   }
 
   ngAfterViewInit() {
@@ -50,18 +50,25 @@ export class PostFeedComponent implements AfterViewInit {
   }
 
   onCreated(event: { postText: string }) {
-    // console.log("event: ", event);
     this.createPost(event.postText);
   }
 
   createPost(content: string) {
-    firstValueFrom(
-      this.postService.createPost({
+    this.store.dispatch(postsActions.postCreate({
+      post: {
         title: 'Новый пост',
         content,
         authorId: this.profile()!.id,
         communityId: 0,
-      })
-    );
+      }
+    }));
+    // firstValueFrom(
+    //   this.postService.createPost({
+    //     title: 'Новый пост',
+    //     content,
+    //     authorId: this.profile()!.id,
+    //     communityId: 0,
+    //   })
+    // );
   }
 }

@@ -1,8 +1,9 @@
 import { Component, inject, OnDestroy } from '@angular/core';
-import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
-// import { ProfileService } from '../../../data/services/profile.service';
-import {ProfileService} from '@tt/profile';
-import { debounceTime, startWith, Subscription, switchMap } from 'rxjs';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { debounceTime, startWith, Subscription } from 'rxjs';
+import {profileActions, selectedProfileFilterParams} from '../../data';
+import {ProfileFilterParams} from '../../data/interfaces/profile-filter.interfaces';
 
 @Component({
   selector: 'app-profile-filters',
@@ -12,12 +13,14 @@ import { debounceTime, startWith, Subscription, switchMap } from 'rxjs';
 })
 export class ProfileFiltersComponent implements OnDestroy {
   fb = inject(FormBuilder);
-  profileService = inject(ProfileService);
+  store = inject(Store);
+  filterParams = this.store.selectSignal(selectedProfileFilterParams);
 
-  searchForm = this.fb.group({
-    firstName: [''],
-    lastName: [''],
-    stack: [''],
+  searchForm = this.fb.group<ProfileFilterParams>({
+
+    firstName: this.filterParams().firstName,
+    lastName: this.filterParams().lastName,
+    stack: this.filterParams().stack,
   });
 
   searchFormSub!: Subscription;
@@ -26,12 +29,12 @@ export class ProfileFiltersComponent implements OnDestroy {
     this.searchFormSub = this.searchForm.valueChanges
       .pipe(
         startWith({}),
-        debounceTime(300),
-        switchMap((formValue) => {
-          return this.profileService.filterProfiles(formValue);
-        })
+        debounceTime(300)
       )
-      .subscribe();
+      // todo почему formValue пустой при повторном заходе на страницу
+      .subscribe((formValue) => {
+        this.store.dispatch(profileActions.filterEvents({filters: this.searchForm.value}));
+      });
   }
 
   ngOnDestroy() {
