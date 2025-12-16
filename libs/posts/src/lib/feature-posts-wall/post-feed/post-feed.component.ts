@@ -7,7 +7,6 @@ import {
   Renderer2,
 } from '@angular/core';
 import {Store} from '@ngrx/store';
-import {firstValueFrom} from 'rxjs';
 import {GlobalStoreService, Throttle} from '@tt/shared';
 import {PostInputComponent} from '../../ui';
 import {PostComponent} from '../post/post.component';
@@ -21,11 +20,9 @@ import {postsActions, PostService, selectPosts} from '../../data';
 })
 export class PostFeedComponent implements AfterViewInit {
   store = inject(Store);
-  postService = inject(PostService);
   hostElement = inject(ElementRef);
   r2 = inject(Renderer2);
 
-  // feed = inject(PostService).posts;
   feed = this.store.selectSignal(selectPosts);
   profile = inject(GlobalStoreService).me;
 
@@ -53,7 +50,6 @@ export class PostFeedComponent implements AfterViewInit {
   }
 
   onCreated(event: { postText: string }) {
-    // console.log("event: ", event);
     this.createPost(event.postText);
   }
 
