@@ -11,7 +11,7 @@ export class PostService {
 
   baseApiUrl = 'https://icherniakov.ru/yt-course/';
 
-  posts = signal<Post[]>([]);
+  // posts = signal<Post[]>([]);
 
   createPost(payload: PostCreateDto) {
     return this.#http.post<Post>(`${this.baseApiUrl}post/`, payload).pipe(
@@ -24,7 +24,7 @@ export class PostService {
   fetchPosts() {
     return this.#http
       .get<Post[]>(`${this.baseApiUrl}post/`)
-      .pipe(tap((res) => this.posts.set(res)));
+      // .pipe(tap((res) => this.posts.set(res)));
   }
 
   createComment(payload: CommentCreateDto) {
