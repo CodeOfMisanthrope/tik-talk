@@ -3,19 +3,59 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs';
 import {ProfileService} from '@tt/profile';
 import { Chat, LastMessageRes, Message } from '../interfaces/chats.interface';
+import {ChatWsService} from '../interfaces/chat-ws-service.interface';
+import {ChatWsNativeService} from './chat-ws-native.service';
+import {AuthService} from '@tt/auth';
+import {Profile} from '@tt/interfaces/profile';
+import {ChatWSMessage} from '../interfaces/chat-ws-message.interface';
+import {isNewMessage, isUnreadMessage} from '../interfaces/type-guards';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ChatsService {
   http = inject(HttpClient);
+  #authService = inject(AuthService);
   me = inject(ProfileService).me;
+
+  wsAdapter: ChatWsService = new ChatWsNativeService();
 
   activeChatMessages = signal<Message[]>([]);
 
   baseApiUrl = 'https://icherniakov.ru/yt-course/';
   chatsUrl = `${this.baseApiUrl}chat/`;
   messageUrl = `${this.baseApiUrl}message/`;
+
+  connectWs() {
+    this.wsAdapter.connect({
+      url: `${this.baseApiUrl}chat/ws`,
+      token: this.#authService.token ?? '',
+      handleMessage: this.handleWSMessage,
+    });
+  }
+
+  handleWSMessage = (message: ChatWSMessage) => {
+    if (!('action' in message)) return;
+
+    if (isUnreadMessage(message)) {
+      // TODO
+    }
+
+    if (isNewMessage(message)) {
+      this.activeChatMessages.set([
+        ...this.activeChatMessages(),
+        {
+          id: message.data.id,
+          userFromId: message.data.author,
+          personalChatId: message.data.chat_id,
+          text: message.data.message,
+          createdAt: message.data.created_at,
+          isRead: false,
+          isMine: false,
+        }
+      ]);
+    }
+  }
 
   createChat(userId: number) {
     return this.http.post<Chat>(`${this.chatsUrl}${userId}`, {});
