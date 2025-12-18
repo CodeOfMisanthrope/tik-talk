@@ -1,7 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { AsyncPipe, JsonPipe, NgForOf } from '@angular/common';
-import {ImgUrlPipe, SvgIconComponent} from '@tt/common-ui';
+import {ImgUrlPipe, MessageCountComponent, SvgIconComponent} from '@tt/common-ui';
+import {ChatsService} from '@tt/chats';
 import {ProfileService} from '@tt/profile';
 import { firstValueFrom } from 'rxjs';
 import { SubscriberCardComponent } from './subsriber-card/subscriber-card.component';
@@ -12,6 +13,7 @@ import { SubscriberCardComponent } from './subsriber-card/subscriber-card.compon
     NgForOf,
     RouterLink,
     SvgIconComponent,
+    MessageCountComponent,
     SubscriberCardComponent,
     AsyncPipe,
     ImgUrlPipe,
@@ -22,9 +24,10 @@ import { SubscriberCardComponent } from './subsriber-card/subscriber-card.compon
 })
 export class SidebarComponent {
   profileService = inject(ProfileService);
-
+  chatService = inject(ChatsService);
   subscribers$ = this.profileService.getSubscribersShortList();
 
+  unreadMessageCount = this.chatService.unreadMessagesCount;
   me = this.profileService.me;
 
   menuItems = [
