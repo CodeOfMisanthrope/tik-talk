@@ -1,7 +1,6 @@
-import {ChatConnectionWSParams, ChatWsService} from '../interfaces/chat-ws-service.interface';
+import { ChatConnectionWSParams, ChatWsService } from '../interfaces/chat-ws-service.interface';
 
 export class ChatWsNativeService implements ChatWsService {
-
   #socket: WebSocket | null = null;
 
   connect(params: ChatConnectionWSParams) {
@@ -21,8 +20,8 @@ export class ChatWsNativeService implements ChatWsService {
   sendMessage(text: string, chatId: number): void {
     this.#socket?.send(
       JSON.stringify({
-        text: text,
-        chat_id: chatId
+        text,
+        chat_id: chatId,
       })
     );
   }
