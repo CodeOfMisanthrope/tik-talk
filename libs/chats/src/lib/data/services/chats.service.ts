@@ -40,6 +40,10 @@ export class ChatsService {
     }) as Observable<ChatWSMessage>;
   }
 
+  disconnectWs() {
+    this.wsAdapter.disconnect();
+  }
+
   handleWSMessage = (message: ChatWSMessage) => {
     if (!('action' in message)) return;
 
