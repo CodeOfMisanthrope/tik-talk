@@ -1,4 +1,4 @@
-<img src="/assets/svg/logo-small.svg" alt="logo" class="ml16 mb20" />
+<img src="/assets/svg/logo-small.svg" alt="logo" class="ml16 mb20"/>
 
 <nav>
   <ul class="main-menu-list">
@@ -7,6 +7,9 @@
       <a class="menu-item" [routerLink]="[menuItem.link]" routerLinkActive="active">
         <svg [icon]="menuItem.icon"></svg>
         <span>{{ menuItem.label }}</span>
+        @if (menuItem.icon === 'chat') {
+          <app-message-count [value]="unreadMessageCount()"/>
+        }
       </a>
     </li>
   </ul>
@@ -15,7 +18,7 @@
 <p class="medium-text mb20">Подписчики</p>
 
 @for (profile of subscribers$ | async; track profile.id) {
-<app-subscriber-card [profile]="profile"></app-subscriber-card>
+  <app-subscriber-card [profile]="profile"></app-subscriber-card>
 }
 
 <div class="to-subscribers mt20">
@@ -24,16 +27,17 @@
 </div>
 
 <footer class="sidebar__footer">
-  @if (me(); as me) { @if (me.avatarUrl) {
-  <img [src]="me.avatarUrl | imgUrl" alt="" />
-  } @else {
-  <img src="/assets/imgs/avatar-placeholder.png" alt="" />
-  }
+  @if (me(); as me) {
+    @if (me.avatarUrl) {
+      <img [src]="me.avatarUrl | imgUrl" alt=""/>
+    } @else {
+      <img src="/assets/imgs/avatar-placeholder.png" alt=""/>
+    }
 
-  <div class="medium-text username-text">{{ me.username }}</div>
+    <div class="medium-text username-text">{{ me.username }}</div>
 
-  <a [routerLink]="['settings']" class="settings-btn">
-    <svg icon="settings"></svg>
-  </a>
+    <a [routerLink]="['settings']" class="settings-btn">
+      <svg icon="settings"></svg>
+    </a>
   }
 </footer>

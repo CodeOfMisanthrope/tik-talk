@@ -14,9 +14,9 @@ export class ChatsPageComponent implements OnInit {
   #chatService = inject(ChatsService);
 
   constructor() {
-    this.#chatService.connectWs()
-      .pipe(takeUntilDestroyed())
-      .subscribe();
+    // this.#chatService.connectWs()
+    //   .pipe(takeUntilDestroyed())
+    //   .subscribe();
   }
 
   // ws-native

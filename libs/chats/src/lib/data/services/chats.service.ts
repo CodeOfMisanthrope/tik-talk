@@ -24,6 +24,8 @@ export class ChatsService {
 
   activeChatMessages = signal<Message[]>([]);
 
+  unreadMessagesCount = signal<number>(0);
+
   baseApiUrl = 'https://icherniakov.ru/yt-course/';
   chatsUrl = `${this.baseApiUrl}chat/`;
   messageUrl = `${this.baseApiUrl}message/`;
@@ -43,6 +45,8 @@ export class ChatsService {
 
     if (isUnreadMessage(message)) {
       // TODO
+      const { count } = message.data;
+      this.unreadMessagesCount.set(count);
     }
 
     if (isNewMessage(message)) {
