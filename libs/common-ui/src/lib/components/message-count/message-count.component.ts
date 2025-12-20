@@ -1,0 +1,12 @@
+import {Component, input} from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+@Component({
+  selector: 'app-message-count',
+  imports: [CommonModule],
+  templateUrl: './message-count.component.html',
+  styleUrl: './message-count.component.scss',
+})
+export class MessageCountComponent {
+  value = input.required<number>();
+}

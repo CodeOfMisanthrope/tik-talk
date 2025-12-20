@@ -1,7 +1,7 @@
 import { Component, computed, DestroyRef, inject, input, OnInit, signal } from '@angular/core';
 import { ChatWorkspaceMessageComponent } from './chat-workspace-message/chat-workspace-message.component';
 import {MessageInputComponent} from '../../../ui';
-import {Chat, ChatsService} from '@tt/chats';
+import {Chat, ChatsService} from '../../../data';
 import { firstValueFrom, interval, switchMap, timer } from 'rxjs';
 import {groupMessagesByTimeZone} from '../../../utils/data';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -33,7 +33,11 @@ export class ChatWorkspaceMessagesWrapperComponent implements OnInit {
   }
 
   async onSendMessage(messageText: string) {
-    await firstValueFrom(this.chatsService.sendMessage(this.chat().id, messageText));
+    this.chatsService.wsAdapter.sendMessage(
+      messageText,
+      this.chat().id
+    );
+    // await firstValueFrom(this.chatsService.sendMessage(this.chat().id, messageText));
 
     await firstValueFrom(this.chatsService.getChatById(this.chat().id));
   }
