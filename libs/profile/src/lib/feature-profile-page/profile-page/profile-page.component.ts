@@ -21,7 +21,7 @@ import { ProfileHeaderComponent } from '../../ui/profile-header/profile-header.c
   ],
   templateUrl: './profile-page.component.html',
   styleUrl: './profile-page.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProfilePageComponent {
   profileService = inject(ProfileService);
@@ -44,7 +44,7 @@ export class ProfilePageComponent {
   );
 
   async sendMessage(userId: number) {
-      this.router.navigate(['/chats', 'new'], { queryParams: {userId}});
+    this.router.navigate(['/chats', 'new'], { queryParams: { userId } });
     // firstValueFrom(this.chatsService.createChat(userId)).then((res) => {
     //   this.router.navigate(['/chats', res.id]);
     // });
