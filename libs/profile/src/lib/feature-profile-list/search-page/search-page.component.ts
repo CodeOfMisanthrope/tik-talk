@@ -13,6 +13,4 @@ import {selectFilteredProfiles} from '../../data';
 export class SearchPageComponent {
   store = inject(Store);
   profiles = this.store.selectSignal(selectFilteredProfiles);
-
-  constructor() {}
 }
