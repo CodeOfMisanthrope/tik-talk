@@ -1,13 +1,6 @@
-import { Component, effect, inject, ViewChild } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
-// import { ProfileService } from '../../data/services/profile.service';
-import {ProfileService} from '@tt/profile';
+import { ChangeDetectionStrategy, Component, effect, inject, ViewChild } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ProfileService } from '../../data/services/profile.service';
 import { firstValueFrom } from 'rxjs';
 import { AvatarUploadComponent } from '../../ui/avatar-upload/avatar-upload.component';
 
@@ -16,6 +9,7 @@ import { AvatarUploadComponent } from '../../ui/avatar-upload/avatar-upload.comp
   imports: [ReactiveFormsModule, AvatarUploadComponent],
   templateUrl: './settings-page.component.html',
   styleUrl: './settings-page.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SettingsPageComponent {
   fb = inject(FormBuilder);
@@ -33,16 +27,12 @@ export class SettingsPageComponent {
 
   constructor() {
     effect(() => {
-      // @ts-ignore
       this.form.patchValue({
         ...this.profileService.me(),
-        // @ts-ignore
         stack: this.mergeStack(this.profileService.me()?.stack),
       });
     });
   }
-
-  ngAfterViewInit() {}
 
   onSave() {
     this.form.markAllAsTouched();
@@ -54,9 +44,8 @@ export class SettingsPageComponent {
       firstValueFrom(this.profileService.uploadAvatar(this.avatarUploader.avatar));
     }
 
-    // @ts-ignore
     firstValueFrom(
-        // @ts-ignore
+      // @ts-ignore
       this.profileService.patchProfile({
         ...this.form.value,
         stack: this.splitStack(this.form.value.stack),
