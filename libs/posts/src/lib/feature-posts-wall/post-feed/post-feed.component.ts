@@ -18,7 +18,7 @@ import { postsActions, selectPosts } from '../../data';
   imports: [PostInputComponent, PostComponent],
   templateUrl: './post-feed.component.html',
   styleUrl: './post-feed.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PostFeedComponent implements AfterViewInit {
   store = inject(Store);
