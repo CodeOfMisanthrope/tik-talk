@@ -40,8 +40,6 @@ export class SettingsPageComponent {
     });
   }
 
-  ngAfterViewInit() {}
-
   onSave() {
     this.form.markAllAsTouched();
     this.form.updateValueAndValidity();
