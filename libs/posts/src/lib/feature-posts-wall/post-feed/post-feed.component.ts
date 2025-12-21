@@ -1,22 +1,24 @@
 import {
   AfterViewInit,
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   HostListener,
   inject,
   Renderer2,
 } from '@angular/core';
-import {Store} from '@ngrx/store';
-import {GlobalStoreService, Throttle} from '@tt/shared';
-import {PostInputComponent} from '../../ui';
-import {PostComponent} from '../post/post.component';
-import {postsActions, PostService, selectPosts} from '../../data';
+import { Store } from '@ngrx/store';
+import { GlobalStoreService, Throttle } from '@tt/shared';
+import { PostInputComponent } from '../../ui';
+import { PostComponent } from '../post/post.component';
+import { postsActions, selectPosts } from '../../data';
 
 @Component({
   selector: 'app-post-feed',
   imports: [PostInputComponent, PostComponent],
   templateUrl: './post-feed.component.html',
   styleUrl: './post-feed.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PostFeedComponent implements AfterViewInit {
   store = inject(Store);
