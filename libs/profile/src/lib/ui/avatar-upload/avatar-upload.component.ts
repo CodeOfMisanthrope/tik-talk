@@ -1,7 +1,5 @@
 import { Component, signal } from '@angular/core';
-// import { SvgIconComponent } from '../../../common-ui/svg-icon/svg-icon.component';
-import {SvgIconComponent} from '@tt/common-ui';
-import { DndDirective } from '../../../../../common-ui/src/lib/directives/dnd.directive';
+import {DndDirective, SvgIconComponent} from '@tt/common-ui';
 import { FormsModule } from '@angular/forms';
 
 @Component({
