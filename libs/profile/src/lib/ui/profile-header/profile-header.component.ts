@@ -1,13 +1,13 @@
-import {ChangeDetectionStrategy, Component, input} from '@angular/core';
-import {Profile} from '@tt/interfaces/profile';
-import {AvatarCircleComponent} from '@tt/common-ui';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { Profile } from '@tt/interfaces/profile';
+import { AvatarCircleComponent } from '@tt/common-ui';
 
 @Component({
   selector: 'app-profile-header',
   imports: [AvatarCircleComponent],
   templateUrl: './profile-header.component.html',
   styleUrl: './profile-header.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProfileHeaderComponent {
   profile = input<Profile>();
