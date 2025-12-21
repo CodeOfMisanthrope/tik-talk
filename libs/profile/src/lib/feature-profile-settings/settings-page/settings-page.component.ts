@@ -31,10 +31,8 @@ export class SettingsPageComponent {
 
   constructor() {
     effect(() => {
-      // @ts-ignore
       this.form.patchValue({
         ...this.profileService.me(),
-        // @ts-ignore
         stack: this.mergeStack(this.profileService.me()?.stack),
       });
     });
@@ -50,9 +48,8 @@ export class SettingsPageComponent {
       firstValueFrom(this.profileService.uploadAvatar(this.avatarUploader.avatar));
     }
 
-    // @ts-ignore
     firstValueFrom(
-        // @ts-ignore
+      // @ts-ignore
       this.profileService.patchProfile({
         ...this.form.value,
         stack: this.splitStack(this.form.value.stack),
