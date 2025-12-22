@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   EventEmitter,
   HostBinding,
@@ -8,17 +9,18 @@ import {
   Renderer2,
 } from '@angular/core';
 import { NgIf } from '@angular/common';
-import {AvatarCircleComponent, SvgIconComponent} from '@tt/common-ui';
-import {PostService} from '../../data';
+import { AvatarCircleComponent, SvgIconComponent } from '@tt/common-ui';
+import { PostService } from '../../data';
 import { FormsModule } from '@angular/forms';
 import { firstValueFrom } from 'rxjs';
-import {Deprecated, GlobalStoreService} from '@tt/shared';
+import { Deprecated, GlobalStoreService } from '@tt/shared';
 
 @Component({
   selector: 'app-post-input',
   imports: [AvatarCircleComponent, NgIf, SvgIconComponent, FormsModule],
   templateUrl: './post-input.component.html',
   styleUrl: './post-input.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PostInputComponent {
   r2 = inject(Renderer2);
