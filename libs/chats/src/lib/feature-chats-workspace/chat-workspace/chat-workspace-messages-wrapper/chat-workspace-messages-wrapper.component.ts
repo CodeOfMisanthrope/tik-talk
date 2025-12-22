@@ -1,9 +1,18 @@
-import {ChangeDetectionStrategy, Component, computed, DestroyRef, inject, input, OnInit, signal} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  DestroyRef,
+  inject,
+  input,
+  OnInit,
+  signal,
+} from '@angular/core';
 import { ChatWorkspaceMessageComponent } from './chat-workspace-message/chat-workspace-message.component';
-import {MessageInputComponent} from '../../../ui';
-import {Chat, ChatsService} from '../../../data';
+import { MessageInputComponent } from '../../../ui';
+import { Chat, ChatsService } from '../../../data';
 import { firstValueFrom, interval, switchMap, timer } from 'rxjs';
-import {groupMessagesByTimeZone} from '../../../utils/data';
+import { groupMessagesByTimeZone } from '../../../utils/data';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
@@ -11,7 +20,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   imports: [ChatWorkspaceMessageComponent, MessageInputComponent],
   templateUrl: './chat-workspace-messages-wrapper.component.html',
   styleUrl: './chat-workspace-messages-wrapper.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChatWorkspaceMessagesWrapperComponent implements OnInit {
   private destroyRef = inject(DestroyRef);
@@ -34,10 +43,7 @@ export class ChatWorkspaceMessagesWrapperComponent implements OnInit {
   }
 
   async onSendMessage(messageText: string) {
-    this.chatsService.wsAdapter.sendMessage(
-      messageText,
-      this.chat().id
-    );
+    this.chatsService.wsAdapter.sendMessage(messageText, this.chat().id);
     // await firstValueFrom(this.chatsService.sendMessage(this.chat().id, messageText));
 
     await firstValueFrom(this.chatsService.getChatById(this.chat().id));
