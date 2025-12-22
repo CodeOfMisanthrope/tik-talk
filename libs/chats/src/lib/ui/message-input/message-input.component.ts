@@ -1,9 +1,8 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   EventEmitter,
-  HostBinding,
   inject,
-  input,
   Output,
   Renderer2,
 } from '@angular/core';
@@ -17,6 +16,7 @@ import { ProfileService } from '@tt/profile';
   selector: 'app-message-input',
   styleUrl: './message-input.component.scss',
   templateUrl: './message-input.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MessageInputComponent {
   r2 = inject(Renderer2);
