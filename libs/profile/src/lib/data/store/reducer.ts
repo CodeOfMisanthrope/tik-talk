@@ -33,6 +33,7 @@ export const profileFeature = createFeature({
     on(profileActions.filterEvents, (state, payload) => {
       return {
         ...state,
+        profile: [],
         profileFilters: payload.filters,
       };
     })
