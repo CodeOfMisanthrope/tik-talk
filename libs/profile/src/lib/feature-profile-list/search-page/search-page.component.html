@@ -9,7 +9,7 @@
   [fromRoot]="true"
   (scrolled)="onScroll()"
 >
-  @for (profile of profiles(); track profile.id) {
+  @for (profile of infiniteProfiles$ | async; track profile.id) {
       <app-profile-card
         [profile]="profile"
       ></app-profile-card>
