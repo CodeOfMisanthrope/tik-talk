@@ -5,6 +5,7 @@ import { ProfileFiltersComponent } from '../profile-filters/profile-filters.comp
 import {profileActions, selectFilteredProfiles} from '../../data';
 import {InfiniteScrollTriggerComponent} from '@tt/common-ui';
 import {WaIntersectionObservee, WaIntersectionObserverDirective} from '@ng-web-apis/intersection-observer';
+import {InfiniteScrollDirective} from 'ngx-infinite-scroll';
 
 @Component({
   selector: 'app-search-page',
@@ -14,6 +15,7 @@ import {WaIntersectionObservee, WaIntersectionObserverDirective} from '@ng-web-a
     InfiniteScrollTriggerComponent,
     WaIntersectionObserverDirective,
     WaIntersectionObservee,
+    InfiniteScrollDirective,
   ],
   templateUrl: './search-page.component.html',
   styleUrl: './search-page.component.scss',
@@ -27,6 +29,11 @@ export class SearchPageComponent {
 
   timeToFetch() {
     this.store.dispatch(profileActions.setPage({}));
+  }
+
+  onScroll() {
+    console.log('scroll');
+    this.timeToFetch();
   }
 
   onIntersection(entries: IntersectionObserverEntry[]) {
