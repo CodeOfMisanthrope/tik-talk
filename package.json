@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "nx run tik-talk:serve",
-    "build": "nx build",
+    "build": "nx run tik-talk:build",
     "watch": "nx build --watch --configuration development",
     "test": "nx test"
   },
@@ -28,11 +28,14 @@
     "@angular/forms": "^20.3.0",
     "@angular/platform-browser": "^20.3.0",
     "@angular/router": "^20.3.0",
+    "@ng-web-apis/common": "^5.0.1",
+    "@ng-web-apis/intersection-observer": "^5.0.1",
     "@ngrx/effects": "^20.1.0",
     "@ngrx/store": "^20.1.0",
     "dayjs": "^1.11.19",
     "luxon": "^3.7.2",
     "ngx-cookie-service": "^21.1.0",
+    "ngx-infinite-scroll": "^21.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"

@@ -54,13 +54,16 @@
     "@nx/angular:library": {
       "linter": "eslint",
       "unitTestRunner": "jest",
+      "prefix": "tt",
       "style": "scss",
       "skipTests": true
     },
     "@nx/angular:component": {
       "style": "scss",
+      "prefix": "tt",
       "skipTests": true,
-      "standalone": true
+      "standalone": true,
+      "changeDetection": "OnPush"
     }
   }
 }

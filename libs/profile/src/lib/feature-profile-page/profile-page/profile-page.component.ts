@@ -1,13 +1,13 @@
-import { AsyncPipe, NgForOf } from '@angular/common';
-import { Component, inject, signal } from '@angular/core';
-import { firstValueFrom, switchMap } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { switchMap } from 'rxjs';
 import { toObservable } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import {ImgUrlPipe, SvgIconComponent} from '@tt/common-ui';
-import {PostFeedComponent} from "@tt/posts";
+import { ImgUrlPipe, SvgIconComponent } from '@tt/common-ui';
+import { PostFeedComponent } from '@tt/posts';
 // import {ChatsService} from '@tt/chats';
-import {ProfileService} from '../../data';
-import {ProfileHeaderComponent} from '../../ui/profile-header/profile-header.component';
+import { ProfileService } from '../../data';
+import { ProfileHeaderComponent } from '../../ui/profile-header/profile-header.component';
 
 @Component({
   selector: 'app-profile-page',
@@ -21,6 +21,7 @@ import {ProfileHeaderComponent} from '../../ui/profile-header/profile-header.com
   ],
   templateUrl: './profile-page.component.html',
   styleUrl: './profile-page.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProfilePageComponent {
   profileService = inject(ProfileService);
@@ -43,7 +44,7 @@ export class ProfilePageComponent {
   );
 
   async sendMessage(userId: number) {
-      this.router.navigate(['/chats', 'new'], { queryParams: {userId}});
+    this.router.navigate(['/chats', 'new'], { queryParams: { userId } });
     // firstValueFrom(this.chatsService.createChat(userId)).then((res) => {
     //   this.router.navigate(['/chats', res.id]);
     // });

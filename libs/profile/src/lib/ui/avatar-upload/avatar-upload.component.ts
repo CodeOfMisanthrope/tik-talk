@@ -1,7 +1,5 @@
-import { Component, signal } from '@angular/core';
-// import { SvgIconComponent } from '../../../common-ui/svg-icon/svg-icon.component';
-import {SvgIconComponent} from '@tt/common-ui';
-import { DndDirective } from '../../../../../common-ui/src/lib/directives/dnd.directive';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { DndDirective, SvgIconComponent } from '@tt/common-ui';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -9,6 +7,7 @@ import { FormsModule } from '@angular/forms';
   imports: [SvgIconComponent, DndDirective, FormsModule],
   templateUrl: './avatar-upload.component.html',
   styleUrl: './avatar-upload.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AvatarUploadComponent {
   preview = signal<string>('/assets/imgs/avatar-placeholder.png');

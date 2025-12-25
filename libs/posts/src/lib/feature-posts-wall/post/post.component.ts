@@ -1,16 +1,9 @@
-import { Component, inject, input, OnInit, signal } from '@angular/core';
-// import { PostComment, Post } from '../../../data/interfaces/post.interface';
-// import { AvatarCircleComponent } from '../../../common-ui/avatar-circle/avatar-circle.component';
-// import { SvgIconComponent } from '../../../common-ui/svg-icon/svg-icon.component';
-import {AvatarCircleComponent, SvgIconComponent} from '@tt/common-ui';
-// import { PostInputComponent } from '../../ui/post-input/post-input.component';
-// import { CommentComponent } from '../../ui/comment/comment.component';
-// import { PostService } from '../../../data/services/post.service';
+import { ChangeDetectionStrategy, Component, inject, input, OnInit, signal } from '@angular/core';
+import { AvatarCircleComponent, SvgIconComponent } from '@tt/common-ui';
 import { firstValueFrom } from 'rxjs';
-// import { TimeAgoPipe } from '../../../helpers/pipes/time-ago.pipe';
-import {TimeAgoPipe} from '../../pipes/time-ago.pipe';
-import {CommentComponent, PostInputComponent} from '../../ui';
-import {Post, PostComment, PostService} from '../../data';
+import { TimeAgoPipe } from '../../pipes/time-ago.pipe';
+import { CommentComponent, PostInputComponent } from '../../ui';
+import { Post, PostComment, PostService } from '../../data';
 
 @Component({
   selector: 'app-post',
@@ -23,6 +16,7 @@ import {Post, PostComment, PostService} from '../../data';
   ],
   templateUrl: './post.component.html',
   styleUrl: './post.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PostComponent implements OnInit {
   post = input<Post>();
