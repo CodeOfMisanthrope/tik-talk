@@ -30,43 +30,43 @@ export class SearchPageComponent {
   profiles = this.store.selectSignal(selectFilteredProfiles);
   console = console;
 
-  profilesSubject$ = new Subject<Profile[]>();
+  // profilesSubject$ = new Subject<Profile[]>();
 
-  infiniteProfiles$ = this.profilesSubject$.pipe(
-    scan((acc, curr) => {
-      return acc.concat(curr) as Profile[];
-    }, [] as Profile[])
-  );
+  // infiniteProfiles$ = this.profilesSubject$.pipe(
+  //   scan((acc, curr) => {
+  //     return acc.concat(curr) as Profile[];
+  //   }, [] as Profile[])
+  // );
 
-  page = 1;
+  // page = 1;
 
   constructor() {}
 
-  ngOnInit() {
-    this.getNextPage();
-  }
+  // ngOnInit() {
+    // this.getNextPage();
+  // }
 
-  async getNextPage() {
-    this.page += 1;
-    const res = await firstValueFrom(this.profileService.filterProfiles({ page: this.page }));
-    this.profilesSubject$.next(res.items);
-  }
+  // async getNextPage() {
+  //   this.page += 1;
+  //   const res = await firstValueFrom(this.profileService.filterProfiles({ page: this.page }));
+  //   this.profilesSubject$.next(res.items);
+  // }
 
   timeToFetch() {
     this.store.dispatch(profileActions.setPage({}));
   }
 
-  onScroll() {
-    console.log('scroll');
-    this.getNextPage();
-    // this.timeToFetch();
-  }
+  // onScroll() {
+  //   console.log('scroll');
+  //   this.getNextPage();
+  //   // this.timeToFetch();
+  // }
 
-  onIntersection(entries: IntersectionObserverEntry[]) {
-    if (!entries.length) return;
-
-    if (entries[0].intersectionRatio > 0) {
-      this.timeToFetch();
-    }
-  }
+  // onIntersection(entries: IntersectionObserverEntry[]) {
+  //   if (!entries.length) return;
+  //
+  //   if (entries[0].intersectionRatio > 0) {
+  //     this.timeToFetch();
+  //   }
+  // }
 }
