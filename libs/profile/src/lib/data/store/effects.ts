@@ -1,10 +1,10 @@
-import {inject, Injectable} from '@angular/core';
-import {Actions, createEffect, ofType} from '@ngrx/effects';
-import {Store} from '@ngrx/store';
-import {map, switchMap, withLatestFrom} from 'rxjs';
-import {ProfileService} from '../services/profile.service';
-import {profileActions} from './actions';
-import {selectedProfileFilterParams, selectProfilePageable} from './selectors';
+import { inject, Injectable } from '@angular/core';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Store } from '@ngrx/store';
+import { map, switchMap, withLatestFrom } from 'rxjs';
+import { ProfileService } from '../services/profile.service';
+import { profileActions } from './actions';
+import { selectedProfileFilterParams, selectProfilePageable } from './selectors';
 
 @Injectable({
   providedIn: 'root',
@@ -16,21 +16,18 @@ export class ProfileEffects {
 
   filterProfiles = createEffect(() => {
     return this.actions$.pipe(
-      ofType(
-        profileActions.filterEvents,
-        profileActions.setPage
-      ),
+      ofType(profileActions.filterEvents, profileActions.setPage),
       withLatestFrom(
         this.store.select(selectedProfileFilterParams),
-        this.store.select(selectProfilePageable),
+        this.store.select(selectProfilePageable)
       ),
       switchMap(([_, filters, pageable]) => {
         return this.profileService.filterProfiles({
           ...pageable,
-          ...filters
+          ...filters,
         });
       }),
-      map(res => profileActions.profileLoaded({profiles: res.items}))
+      map((res) => profileActions.profileLoaded({ profiles: res.items }))
     );
-  })
+  });
 }
