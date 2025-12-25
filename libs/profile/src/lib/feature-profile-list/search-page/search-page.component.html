@@ -1,7 +1,34 @@
 <app-profile-filters></app-profile-filters>
 
+<!--<div-->
+<!--  class="profile-card__wrapper"-->
+<!--  infiniteScroll-->
+<!--  [infiniteScrollDistance]="2"-->
+<!--  [infiniteScrollThrottle]="50"-->
+<!--  [infiniteScrollContainer]="'app-search-page'"-->
+<!--  [fromRoot]="true"-->
+<!--  (scrolled)="onScroll()"-->
+<!--&gt;-->
+<!--  @for (profile of infiniteProfiles$ | async; track profile.id) {-->
+<!--      <app-profile-card-->
+<!--        [profile]="profile"-->
+<!--      ></app-profile-card>-->
+<!--  }-->
+<!--</div>-->
+
 <div class="profile-card__wrapper">
-  @for (profile of profiles(); track profile.id) {
+  @for (profile of profiles(); track profile.id; let last = $last) {
     <app-profile-card [profile]="profile"></app-profile-card>
+
+    @if (last) {
+      @defer (on viewport) {
+        <tt-infinite-scroll-trigger
+          (loaded)="timeToFetch()"
+        ></tt-infinite-scroll-trigger>
+
+      } @placeholder {
+        <div></div>
+      }
+    }
   }
 </div>
