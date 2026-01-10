@@ -28,6 +28,14 @@ export class LoginPageComponent {
     }),
   });
 
+  ngOnInit(): void {
+    this.form.valueChanges.subscribe(val => {
+      console.log(val);
+    });
+
+    this.form.controls.username.disable();
+  }
+
   onSubmit() {
     if (this.form.valid) {
       const val = this.form.value;
