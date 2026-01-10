@@ -1,1 +1,9 @@
-<p>tt-input works!</p>
+<label class="tt-control-label mb16">
+  <ng-content></ng-content>
+  <input
+    formControlName="username"
+    class="tt-input"
+    [type]="type()"
+    [placeholder]="placeholder()"
+  />
+</label>
