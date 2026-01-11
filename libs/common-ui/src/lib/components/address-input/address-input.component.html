@@ -1,1 +1,9 @@
-<p>address-input works!</p>
+<tt-input
+  [formControl]="innerSearchControl"
+></tt-input>
+
+@if (suggestions$ | async; as suggestions) {
+  @for (suggest of suggestions; track suggest) {
+    <span>{{ suggest.data.city }}</span>
+  }
+}
