@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
+  HostBinding,
   HostListener,
   signal,
 } from '@angular/core';
@@ -25,8 +26,14 @@ import { BehaviorSubject } from 'rxjs';
   ],
 })
 export class StackInputComponent implements ControlValueAccessor {
-  // value = signal<string[]>([]);
   value$ = new BehaviorSubject<string[]>([]);
+
+  #disabled = false;
+
+  @HostBinding('class.disabled')
+  get disabled(): boolean {
+    return this.#disabled;
+  }
 
   innerInput = '';
 
@@ -50,9 +57,9 @@ export class StackInputComponent implements ControlValueAccessor {
     this.onTouched = fn;
   }
 
-  // setDisabledState(isDisabled: boolean): void {
-  //   // throw new Error('Method not implemented.');
-  // }
+  setDisabledState(isDisabled: boolean): void {
+    this.#disabled = isDisabled;
+  }
 
   writeValue(stack: string[] | null): void {
     if (!stack) {

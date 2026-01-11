@@ -30,3 +30,10 @@
   background: none;
   outline: none;
 }
+
+:host.disabled {
+  .stack-control {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+}
