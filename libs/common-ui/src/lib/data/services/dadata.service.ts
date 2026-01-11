@@ -1,6 +1,8 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DADATA_TOKEN } from './DADATA_TOKEN';
+import { map } from 'rxjs';
+import { DadataSuggestions } from '../interfaces/dadata.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -10,14 +12,16 @@ export class DadataService {
   #http = inject(HttpClient);
 
   getSuggestion(query: string) {
-    return this.#http.post(
-      this.#apiUrl,
-      { query },
-      {
-        headers: {
-          Authorization: `Token ${DADATA_TOKEN}`,
-        },
-      }
-    );
+    return this.#http
+      .post<{ suggestions: DadataSuggestions[] }>(
+        this.#apiUrl,
+        { query },
+        {
+          headers: {
+            Authorization: `Token ${DADATA_TOKEN}`,
+          },
+        }
+      )
+      .pipe(map((res) => res.suggestions));
   }
 }
