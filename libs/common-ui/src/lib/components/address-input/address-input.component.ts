@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, forwardRef, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   ControlValueAccessor,
@@ -8,7 +8,7 @@ import {
 } from '@angular/forms';
 import { TtInputComponent } from '../tt-input/tt-input.component';
 import { DadataService } from '../../data';
-import { debounceTime, switchMap } from 'rxjs';
+import { debounceTime, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'tt-address-input',
@@ -28,15 +28,24 @@ export class AddressInputComponent implements ControlValueAccessor {
   innerSearchControl = new FormControl();
   #dadataService = inject(DadataService);
 
-  suggestions$ = this.innerSearchControl.valueChanges
-    .pipe(
-      debounceTime(500),
-      switchMap(val => {
-        return this.#dadataService.getSuggestion(val);
-      })
-    );
+  isDropdownOpened = signal(true);
 
-  writeValue(obj: any): void {}
+  suggestions$ = this.innerSearchControl.valueChanges.pipe(
+    debounceTime(500),
+    switchMap((val) => {
+      return this.#dadataService.getSuggestion(val).pipe(
+        tap((res) => {
+          this.isDropdownOpened.set(!!res.length);
+        })
+      );
+    })
+  );
+
+  writeValue(city: string | null): void {
+    this.innerSearchControl.patchValue(city, {
+      emitEvent: false
+    });
+  }
 
   setDisabledState?(isDisabled: boolean): void {}
 
@@ -49,5 +58,14 @@ export class AddressInputComponent implements ControlValueAccessor {
   }
 
   onChange(value: any): void {}
+
   onTouched() {}
+
+  onSuggestionPick(city: string) {
+    this.isDropdownOpened.set(false);
+    this.innerSearchControl.patchValue(city, {
+      emitEvent: false,
+    });
+    this.onChange(city);
+  }
 }
