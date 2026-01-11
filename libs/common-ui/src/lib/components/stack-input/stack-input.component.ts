@@ -1,12 +1,69 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  HostListener,
+  signal,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SvgIconComponent } from '../svg-icon/svg-icon.component';
+import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'tt-stack-input',
-  imports: [CommonModule, SvgIconComponent],
+  imports: [CommonModule, SvgIconComponent, FormsModule],
   templateUrl: './stack-input.component.html',
   styleUrl: './stack-input.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      multi: true,
+      useExisting: forwardRef(() => StackInputComponent),
+    },
+  ],
 })
-export class StackInputComponent {}
+export class StackInputComponent implements ControlValueAccessor {
+  // value = signal<string[]>([]);
+  value$ = new BehaviorSubject<string[]>([]);
+
+  innerInput = '';
+
+  @HostListener('keydown.enter')
+  onEnter() {
+    if (!this.innerInput) return;
+
+    this.value$.next([...this.value$.value, this.innerInput]);
+    this.innerInput = '';
+  }
+
+  writeValue(stack: string[] | null): void {
+    if (!stack) {
+      this.value$.next([]);
+      return;
+    }
+
+    this.value$.next(stack);
+  }
+
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+    // throw new Error('Method not implemented.');
+  }
+  onChange() {}
+  onTouched() {}
+
+  onTagDelete(i: number) {
+    const tags = this.value$.value;
+    tags.splice(i, 1);
+    this.value$.next(tags);
+  }
+}
