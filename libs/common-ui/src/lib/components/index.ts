@@ -1,6 +1,7 @@
 import { AvatarCircleComponent } from './avatar-circle/avatar-circle.component';
 import { InfiniteScrollTriggerComponent } from './infinite-scroll-trigger/infinite-scroll-trigger.component';
 import { MessageCountComponent } from './message-count/message-count.component';
+import { StackInputComponent } from './stack-input/stack-input.component';
 import { SvgIconComponent } from './svg-icon/svg-icon.component';
 import { TtInputComponent } from './tt-input/tt-input.component';
 
@@ -10,4 +11,5 @@ export {
   MessageCountComponent,
   SvgIconComponent,
   TtInputComponent,
+  StackInputComponent,
 };
