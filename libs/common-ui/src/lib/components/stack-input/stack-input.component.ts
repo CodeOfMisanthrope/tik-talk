@@ -30,8 +30,11 @@ export class StackInputComponent implements ControlValueAccessor {
 
   innerInput = '';
 
-  @HostListener('keydown.enter')
-  onEnter() {
+  @HostListener('keydown.enter', ['$event'])
+  onEnter(event: Event) {
+    event.stopPropagation();
+    event.preventDefault();
+
     if (!this.innerInput) return;
 
     this.value$.next([...this.value$.value, this.innerInput]);
