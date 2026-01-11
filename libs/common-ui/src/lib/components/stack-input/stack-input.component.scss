@@ -1,9 +1,11 @@
 .stack-control {
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   border-bottom: 1px solid var(--light-color);
   background-color: var(--dark-color);
   padding: 12px 0;
+  gap: 12px
 }
 
 .skill-tag {
@@ -16,4 +18,15 @@
   background: none;
   border: none;
   cursor: pointer;
+}
+
+.stack-ghost-input {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  font-family: 'JetBrains Mono', sans-serif;
+  color: var(--light-color);
+  border: none;
+  background: none;
+  outline: none;
 }
