@@ -3,10 +3,11 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { firstValueFrom } from 'rxjs';
 import { ProfileService } from '../../data';
 import { AvatarUploadComponent } from '../../ui';
+import { StackInputComponent } from '@tt/common-ui';
 
 @Component({
   selector: 'app-settings-page',
-  imports: [ReactiveFormsModule, AvatarUploadComponent],
+  imports: [ReactiveFormsModule, AvatarUploadComponent, StackInputComponent],
   templateUrl: './settings-page.component.html',
   styleUrl: './settings-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -27,9 +28,10 @@ export class SettingsPageComponent {
 
   constructor() {
     effect(() => {
+      // @ts-ignore
       this.form.patchValue({
         ...this.profileService.me(),
-        stack: this.mergeStack(this.profileService.me()?.stack),
+        // stack: this.mergeStack(this.profileService.me()?.stack),
       });
     });
   }
@@ -48,22 +50,22 @@ export class SettingsPageComponent {
       // @ts-ignore
       this.profileService.patchProfile({
         ...this.form.value,
-        stack: this.splitStack(this.form.value.stack),
+        // stack: this.splitStack(this.form.value.stack),
       })
     );
   }
 
-  splitStack(stack: string | null | string[] | undefined) {
-    if (!stack) return [];
-    if (Array.isArray(stack)) return stack;
-
-    return stack.split(',');
-  }
-
-  mergeStack(stack: string | null | string[] | undefined) {
-    if (!stack) return '';
-    if (Array.isArray(stack)) return stack.join(',');
-
-    return stack;
-  }
+  // splitStack(stack: string | null | string[] | undefined) {
+  //   if (!stack) return [];
+  //   if (Array.isArray(stack)) return stack;
+  //
+  //   return stack.split(',');
+  // }
+  //
+  // mergeStack(stack: string | null | string[] | undefined) {
+  //   if (!stack) return '';
+  //   if (Array.isArray(stack)) return stack.join(',');
+  //
+  //   return stack;
+  // }
 }
