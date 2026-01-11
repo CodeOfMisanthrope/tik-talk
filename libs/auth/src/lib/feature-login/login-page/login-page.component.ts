@@ -33,7 +33,7 @@ export class LoginPageComponent {
       console.log(val);
     });
 
-    this.form.controls.username.disable();
+    // this.form.controls.username.disable();
   }
 
   onSubmit() {
