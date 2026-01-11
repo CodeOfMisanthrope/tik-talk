@@ -1,0 +1,19 @@
+.stack-control {
+  width: 100%;
+  display: flex;
+  border-bottom: 1px solid var(--light-color);
+  background-color: var(--dark-color);
+  padding: 12px 0;
+}
+
+.skill-tag {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.stack-btn__delete {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
