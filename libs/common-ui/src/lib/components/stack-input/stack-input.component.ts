@@ -36,15 +36,7 @@ export class StackInputComponent implements ControlValueAccessor {
 
     this.value$.next([...this.value$.value, this.innerInput]);
     this.innerInput = '';
-  }
-
-  writeValue(stack: string[] | null): void {
-    if (!stack) {
-      this.value$.next([]);
-      return;
-    }
-
-    this.value$.next(stack);
+    this.onChange(this.value$.value);
   }
 
   registerOnChange(fn: any): void {
@@ -55,15 +47,29 @@ export class StackInputComponent implements ControlValueAccessor {
     this.onTouched = fn;
   }
 
-  setDisabledState(isDisabled: boolean): void {
-    // throw new Error('Method not implemented.');
+  // setDisabledState(isDisabled: boolean): void {
+  //   // throw new Error('Method not implemented.');
+  // }
+
+  writeValue(stack: string[] | null): void {
+    if (!stack) {
+      this.value$.next([]);
+      return;
+    }
+
+    this.value$.next(stack);
   }
-  onChange() {}
+
+  onChange(value: string[] | null) {
+
+  }
+
   onTouched() {}
 
   onTagDelete(i: number) {
     const tags = this.value$.value;
     tags.splice(i, 1);
     this.value$.next(tags);
+    this.onChange(this.value$.value);
   }
 }
