@@ -7,6 +7,6 @@ import { DadataSuggestions } from '../data/interfaces/dadata.interface';
 export class FullAddressPipe implements PipeTransform {
   transform(value: DadataSuggestions, ...args: unknown[]): unknown {
     const {city, street, house} = value.data;
-    return `${city || ''} ${street || ''} ${house || ''}`;
+    return `${city || ''} ${street || ''} ${house || ''}`.trim();
   }
 }
