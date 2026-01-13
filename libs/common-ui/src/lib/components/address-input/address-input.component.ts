@@ -14,10 +14,9 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { TtInputComponent } from '../tt-input/tt-input.component';
-import { DadataService } from '../../data';
+import { DadataService, DadataSuggestions } from '@tt/data-access';
 import { debounceTime, switchMap, tap } from 'rxjs';
 import { FullAddressPipe } from '../../pipes/full-address.pipe';
-import { DadataSuggestions } from '../../data/interfaces/dadata.interface';
 import { concatAddress } from '@tt/shared';
 
 @Component({
