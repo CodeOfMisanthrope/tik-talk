@@ -1,4 +1,4 @@
-import {Post} from '../interfaces/post.interface';
+import { Post } from '@tt/data-access';
 import {createFeature, createReducer, on} from '@ngrx/store';
 import {postsActions} from './actions';
 

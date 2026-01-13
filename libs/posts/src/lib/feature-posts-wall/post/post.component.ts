@@ -3,7 +3,7 @@ import { AvatarCircleComponent, SvgIconComponent } from '@tt/common-ui';
 import { firstValueFrom } from 'rxjs';
 import { TimeAgoPipe } from '../../pipes/time-ago.pipe';
 import { CommentComponent, PostInputComponent } from '../../ui';
-import { Post, PostComment, PostService } from '../../data';
+import { Post, PostComment, PostService } from '@tt/data-access';
 
 @Component({
   selector: 'app-post',
