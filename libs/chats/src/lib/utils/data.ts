@@ -1,4 +1,4 @@
-import {Message} from '../data';
+import { Message } from '@tt/data-access';
 import {DateTime} from 'luxon';
 
 export function groupMessagesByTimeZone(messages: Message[]) {
