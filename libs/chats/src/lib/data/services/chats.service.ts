@@ -26,7 +26,7 @@ export class ChatsService {
 
   unreadMessagesCount = signal<number>(0);
 
-  baseApiUrl = 'https://icherniakov.ru/yt-course/';
+  baseApiUrl = '/yt-course/';
   chatsUrl = `${this.baseApiUrl}chat/`;
   messageUrl = `${this.baseApiUrl}message/`;
 
