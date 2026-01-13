@@ -9,11 +9,11 @@ export const experimentalRoutes: Route[] = [
     component: ExperimentalPageComponent,
     children: [
       {
-        path: 'form-tv',
+        path: 'tv',
         component: ExperimentalFromTvComponent,
       },
       {
-        path: 'form-anime-review',
+        path: 'anime-review',
         component: ExperimentalFormAnimeReviewComponent,
       },
     ],

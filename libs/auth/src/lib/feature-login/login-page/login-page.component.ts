@@ -2,10 +2,11 @@ import {ChangeDetectionStrategy, Component, inject, signal} from '@angular/core'
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../auth/auth.service';
+import { TtInputComponent } from '@tt/common-ui';
 
 @Component({
   selector: 'app-login-page',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, TtInputComponent],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -26,6 +27,14 @@ export class LoginPageComponent {
       nonNullable: true,
     }),
   });
+
+  ngOnInit(): void {
+    this.form.valueChanges.subscribe(val => {
+      console.log(val);
+    });
+
+    // this.form.controls.username.disable();
+  }
 
   onSubmit() {
     if (this.form.valid) {
