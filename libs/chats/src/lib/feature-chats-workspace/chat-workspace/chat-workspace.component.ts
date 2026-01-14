@@ -1,10 +1,10 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import { AsyncPipe } from '@angular/common';
+import {filter, of, switchMap} from 'rxjs';
+import { ChatsService } from '@tt/data-access';
 import { ChatWorkspaceHeaderComponent } from './chat-workspace-header/chat-workspace-header.component';
 import { ChatWorkspaceMessagesWrapperComponent } from './chat-workspace-messages-wrapper/chat-workspace-messages-wrapper.component';
-import {ActivatedRoute, Router} from '@angular/router';
-import { ChatsService } from '../../data/services/chats.service';
-import {filter, of, switchMap} from 'rxjs';
-import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-chat-workspace',

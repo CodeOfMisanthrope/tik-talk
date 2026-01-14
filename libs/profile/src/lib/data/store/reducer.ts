@@ -1,7 +1,7 @@
 import {Profile} from '@tt/interfaces/profile';
 import {createFeature, createReducer, on} from '@ngrx/store';
 import {profileActions} from './actions';
-import {ProfileFilterParams} from '../interfaces/profile-filter.interfaces';
+import { ProfileFilterParams } from '@tt/data-access';
 
 export interface ProfileState {
   profiles: Profile[];

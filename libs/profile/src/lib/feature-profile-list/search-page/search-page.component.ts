@@ -1,14 +1,15 @@
 import { Component, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { ProfileService } from '@tt/data-access';
 import { ProfileCard } from '../../ui';
 import { ProfileFiltersComponent } from '../profile-filters/profile-filters.component';
-import {profileActions, ProfileService, selectFilteredProfiles} from '../../data';
+import {profileActions, selectFilteredProfiles} from '../../data';
 import {InfiniteScrollTriggerComponent} from '@tt/common-ui';
-import {WaIntersectionObservee, WaIntersectionObserverDirective} from '@ng-web-apis/intersection-observer';
-import {InfiniteScrollDirective} from 'ngx-infinite-scroll';
-import {firstValueFrom, scan, Subject} from 'rxjs';
-import {Profile} from '@tt/interfaces/profile';
-import {AsyncPipe} from '@angular/common';
+// import {WaIntersectionObservee, WaIntersectionObserverDirective} from '@ng-web-apis/intersection-observer';
+// import {InfiniteScrollDirective} from 'ngx-infinite-scroll';
+// import {firstValueFrom, scan, Subject} from 'rxjs';
+// import {Profile} from '@tt/interfaces/profile';
+// import {AsyncPipe} from '@angular/common';
 
 @Component({
   selector: 'app-search-page',
@@ -16,10 +17,10 @@ import {AsyncPipe} from '@angular/common';
     ProfileCard,
     ProfileFiltersComponent,
     InfiniteScrollTriggerComponent,
-    WaIntersectionObserverDirective,
-    WaIntersectionObservee,
-    InfiniteScrollDirective,
-    AsyncPipe,
+    // WaIntersectionObserverDirective,
+    // WaIntersectionObservee,
+    // InfiniteScrollDirective,
+    // AsyncPipe,
   ],
   templateUrl: './search-page.component.html',
   styleUrl: './search-page.component.scss',

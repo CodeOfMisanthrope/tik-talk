@@ -1,6 +1,6 @@
 import {createActionGroup, props} from '@ngrx/store';
 import {Profile} from '@tt/interfaces/profile';
-import {ProfileFilterParams} from '../interfaces/profile-filter.interfaces';
+import { ProfileFilterParams } from '@tt/data-access';
 
 export const profileActions = createActionGroup({
   source: 'profile',
