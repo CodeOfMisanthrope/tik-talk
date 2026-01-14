@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import { ChatWorkspaceMessageComponent } from './chat-workspace-message/chat-workspace-message.component';
 import { MessageInputComponent } from '../../../ui';
-import { Chat, ChatsService } from '../../../data';
+import { Chat, ChatsService } from '@tt/data-access';
 import { firstValueFrom, interval, switchMap, timer } from 'rxjs';
 import { groupMessagesByTimeZone } from '../../../utils/data';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';

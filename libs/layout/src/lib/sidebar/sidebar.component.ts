@@ -1,9 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { AsyncPipe, JsonPipe, NgForOf } from '@angular/common';
+import { AsyncPipe, NgForOf } from '@angular/common';
 import {ImgUrlPipe, MessageCountComponent, SvgIconComponent} from '@tt/common-ui';
 import {ChatsService} from '@tt/chats';
-import {ProfileService} from '@tt/profile';
+import { ProfileService } from '@tt/data-access';
 import { firstValueFrom } from 'rxjs';
 import { SubscriberCardComponent } from './subsriber-card/subscriber-card.component';
 

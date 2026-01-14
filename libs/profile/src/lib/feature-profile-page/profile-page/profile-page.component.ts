@@ -5,8 +5,7 @@ import { toObservable } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ImgUrlPipe, SvgIconComponent } from '@tt/common-ui';
 import { PostFeedComponent } from '@tt/posts';
-// import {ChatsService} from '@tt/chats';
-import { ProfileService } from '../../data';
+import { ProfileService } from '@tt/data-access';
 import { ProfileHeaderComponent } from '../../ui/profile-header/profile-header.component';
 
 @Component({

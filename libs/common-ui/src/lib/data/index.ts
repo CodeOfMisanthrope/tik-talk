@@ -1,5 +1,5 @@
-import { DadataService } from './services/dadata.service';
+import { Address } from './interfaces/address.interface';
 
-export {
-  DadataService
+export type {
+  Address
 };

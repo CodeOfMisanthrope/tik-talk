@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, effect, inject, ViewChild } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { firstValueFrom } from 'rxjs';
-import { ProfileService } from '../../data';
+import { ProfileService } from '@tt/data-access';
 import { AvatarUploadComponent } from '../../ui';
 import { AddressInputComponent, StackInputComponent } from '@tt/common-ui';
 

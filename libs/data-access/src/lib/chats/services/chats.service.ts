@@ -1,7 +1,7 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {map, Observable} from 'rxjs';
-import {ProfileService} from '@tt/profile';
+import { ProfileService } from '@tt/data-access';
 import { Chat, LastMessageRes, Message } from '../interfaces/chats.interface';
 import {ChatWsService} from '../interfaces/chat-ws-service.interface';
 import {ChatWsNativeService} from './chat-ws-native.service';

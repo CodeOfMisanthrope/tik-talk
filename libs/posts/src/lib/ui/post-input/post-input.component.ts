@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { AvatarCircleComponent, SvgIconComponent } from '@tt/common-ui';
-import { PostService } from '../../data';
+import { PostService } from '@tt/data-access';
 import { FormsModule } from '@angular/forms';
 import { firstValueFrom } from 'rxjs';
 import { Deprecated, GlobalStoreService } from '@tt/shared';
